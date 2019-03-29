@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $connection = new PDO($dsn, $username, $password, $options);
 
     $sql = "SELECT *
-      FROM courses
+      FROM course
       WHERE CRN = :CRN";
 
     $location = $_POST['CRN'];
@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
 ?>
 
 
-<?php include "templates/header.php"; ?>
+<?php require "templates/header.php"; ?>
 
 <?php
 if (isset($_POST['submit'])) {
@@ -35,26 +35,26 @@ if (isset($_POST['submit'])) {
 
        <table>
          <thead>
-   <tr>
-     <th>CRN</th>
-     <th>Credit Hours</th>
-     <th>Semester</th>
-     <th>Professor</th>
-   </tr>
+           <tr>
+             <th>CRN</th>
+             <th>Credit Hours</th>
+             <th>Semester</th>
+             <th>Professor</th>
+           </tr>
          </thead>
          <tbody>
      <?php foreach ($result as $row) { ?>
          <tr>
-   <td><?php echo escape($row["CRN"]); ?></td>
-   <td><?php echo escape($row["creditHours"]); ?></td>
-   <td><?php echo escape($row["semester"]); ?></td>
-   <td><?php echo escape($row["professor"]); ?></td>
+           <td><?php echo escape($row["CRN"]); ?></td>
+           <td><?php echo escape($row["creditHours"]); ?></td>
+           <td><?php echo escape($row["semester"]); ?></td>
+           <td><?php echo escape($row["professor"]); ?></td>
          </tr>
        <?php } ?>
          </tbody>
      </table>
      <?php } else { ?>
-       > No results found for <?php echo escape($_POST['CRN']); ?>.
+       <blockquote>No results found for <?php echo escape($_POST['CRN']); ?>.</blockquote>
      <?php }
    } ?>
 
@@ -71,4 +71,4 @@ if (isset($_POST['submit'])) {
 
     <a href="index.php">Back to home</a>
 
-<?php include "templates/footer.php"; ?>
+<?php require "templates/footer.php"; ?>

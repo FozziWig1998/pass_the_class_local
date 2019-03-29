@@ -15,26 +15,37 @@ if (isset($_POST['submit'])) {
 
      $sql = sprintf(
         "INSERT INTO %s (%s) values (%s)",
-        "courses",
-        implode(", ", array_keys($new_couse)),
-        ":" . implode(", :", array_keys($new_course))
+        "Course",
+        implode(", ", array_keys($new_course)),
+                ":" . implode(", :", array_keys($new_course))
      );
 
      $statement = $connection->prepare($sql);
-     $statement->execute($new_user);
+     $statement->execute($new_course);
 
   } catch(PDOException $error) {
-      echo $sql . "<br>" . $error->getMessage();
+      echo $error->getMessage();
     }
 }
-
-
 ?>
 
 <?php require "templates/header.php"; ?>
 
 <?php if (isset($_POST['submit']) && $statement) { ?>
-  > <?php echo $_POST['firstname']; ?> successfully added.
+   <blockquote><?php
+   echo $_POST['CRN'];
+   echo " ";
+   echo $_POST['creditHours'];
+   echo " ";
+   echo $_POST['semester'];
+   echo " ";
+   echo $_POST['professor'];
+   echo " ";
+   ?> successfully added.</blockquote>
+<?php }
+
+ else if (isset($_POST['submit'])) { ?>
+   <blockquote><?php echo $_POST['CRN']; ?> not added.</blockquote>
 <?php } ?>
 
 
@@ -44,13 +55,18 @@ if (isset($_POST['submit'])) {
 
 <form method="post">
 	<label for="CRN">Course CRN</label>
-	<input type="text" name="CRN" id="CRN">
+	<input type="number" name="CRN" id="CRN">
+
 	<label for="creditHours">Credit Hours</label>
 	<input type="number" name="creditHours" id="creditHours">
+
 	<label for="semester">Semester</label>
 	<input type="text" name="semester" id="semester">
+
 	<label for="professor">Professor</label>
 	<input type="text" name="professor" id="professor">
+
+  <input type="submit" name="submit" value="Submit">
 </form>
 
 <a href="index.php">Back to home</a>
