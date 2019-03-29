@@ -1,9 +1,10 @@
 <?php
+require "../config.php";
+require "../common.php";
     try {
-        require "config.php";
-        require "common.php";
+        $connection = new PDO($dsn, $username, $password, $options);
 
-        $sql = "SELECT * FROM users";
+        $sql = "SELECT * FROM Course";
 
         $statement = $connection->prepare($sql);
         $statement->execute();
@@ -21,7 +22,6 @@
 <table>
     <thead>
         <tr>
-            <th>#</th>
             <th>CRN</th>
             <th>Professor</th>
             <th>Semester</th>
@@ -32,12 +32,11 @@
     <tbody>
         <?php foreach ($result as $row) : ?>
             <tr>
-                <td><?php echo escape($row["id"]); ?></td>
-                <td><?php echo escape($row["crn"]); ?></td>
+                <td><?php echo escape($row["CRN"]); ?></td>
                 <td><?php echo escape($row["professor"]); ?></td>
                 <td><?php echo escape($row["semester"]); ?></td>
                 <td><?php echo escape($row["creditHours"]); ?></td>
-                <td><a href="update-single.php?id=<?php echo escape($row["id"]); ?>">Edit</a></td>
+                <td><a href="update-single.php?CRN=<?php echo escape($row["CRN"]); ?>">Edit</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

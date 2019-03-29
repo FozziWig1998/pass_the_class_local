@@ -1,31 +1,34 @@
 <?php /*add a new class page... this will be used to add a new class to the database */
 
-if (isset($_POST['submit'])) {
+// if (isset($_POST['submit'])) {
   require "../common.php";
   require "../config.php";
+  
+if (isset($_POST['submit'])) {
+  if (!hash_equals($_SESSION['csrf'], $_POST['csrf'])) die();
 
-  try {
-    $connection = new PDO($dsn, $username, $password, $options);
-    $new_course = array(
-      'CRN' => $_POST['CRN'],
-      'creditHours' => $_POST['creditHours'],
-      'semester' => $_POST['semester'],
-      'professor' => $_POST['professor']
-     );
+    try {
+      $connection = new PDO($dsn, $username, $password, $options);
+      $new_course = array(
+        'CRN' => $_POST['CRN'],
+        'creditHours' => $_POST['creditHours'],
+        'semester' => $_POST['semester'],
+        'professor' => $_POST['professor']
+       );
 
-     $sql = sprintf(
-        "INSERT INTO %s (%s) values (%s)",
-        "Course",
-        implode(", ", array_keys($new_course)),
-                ":" . implode(", :", array_keys($new_course))
-     );
+       $sql = sprintf(
+          "INSERT INTO %s (%s) values (%s)",
+          "Course",
+          implode(", ", array_keys($new_course)),
+                  ":" . implode(", :", array_keys($new_course))
+       );
 
-     $statement = $connection->prepare($sql);
-     $statement->execute($new_course);
+       $statement = $connection->prepare($sql);
+       $statement->execute($new_course);
 
-  } catch(PDOException $error) {
-      echo $error->getMessage();
-    }
+    } catch(PDOException $error) {
+        echo $error->getMessage();
+      }
 }
 ?>
 
