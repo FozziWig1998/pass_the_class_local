@@ -11,7 +11,7 @@ if (isset($_POST["submit"])) {
     $connection = new PDO($dsn, $username, $password, $options);
 
     $id = $_POST["submit"];
-    $sql = "DELETE FROM Assignment WHERE name = :name AND course_CRN = :course_CRN";
+    $sql = "DELETE FROM Assignment WHERE name = :name";
     $statement = $connection->prepare($sql);
     $statement->bindValue(':name', $id);
     $statement->execute();

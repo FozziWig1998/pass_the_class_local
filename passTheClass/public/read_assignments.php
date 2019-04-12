@@ -12,10 +12,12 @@ if (isset($_POST['submit'])) {
     $connection = new PDO($dsn, $username, $password, $options);
     $sql = "SELECT *
             FROM Assignment
-            WHERE name = :name";
+            WHERE name = :name AND course_CRN = :course_CRN";
     $location = $_POST['name'];
+    $course_crn = $_POST['course_CRN'];
     $statement = $connection->prepare($sql);
     $statement->bindParam(':name', $location, PDO::PARAM_STR);
+    $statement->bindParam(':course_CRN', $course_crn, PDO::PARAM_STR);
     $statement->execute();
     $result = $statement->fetchAll();
   } catch(PDOException $error) {
@@ -59,6 +61,8 @@ if (isset($_POST['submit'])) {
   <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
   <label for="name">Name</label>
   <input type="text" id="name" name="name">
+  <label for="name">Course CRN</label>
+  <input type="number" id="course_CRN" name="course_CRN">
   <input type="submit" name="submit" value="View Results">
 </form>
 
