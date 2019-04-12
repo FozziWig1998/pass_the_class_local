@@ -15,18 +15,69 @@
 
     <?php include "templates/header.php"; ?>
 
+
+    <?php
+    require "../config.php";
+    require "../common.php";
+        try {
+            $connection = new PDO($dsn, $username, $password, $options);
+
+            $sql = "SELECT * FROM Course";
+
+            $statement = $connection->prepare($sql);
+            $statement->execute();
+
+            $result = $statement->fetchAll();
+        } catch (PDOException $e) {
+            echo $sql . "<br>" . $e->getMessage();
+        }
+    ?>
+
+    <table>
+        <thead>
+            <tr>
+                <th>CRN</th>
+                <th>Professor</th>
+                <th>Semester</th>
+                <th>Credit Hours</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($result as $row) : ?>
+                <tr>
+                    <td><?php echo escape($row["CRN"]); ?></td>
+                    <td><?php echo escape($row["professor"]); ?></td>
+                    <td><?php echo escape($row["semester"]); ?></td>
+                    <td><?php echo escape($row["creditHours"]); ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
     <ul>
       <li>
-        <a href="create.php"><strong>Create</strong></a> - add a Class
+        <a href="create_class.php"><strong>Add a Class</strong></a>
       </li>
       <li>
-        <a href="read.php"><strong>Read</strong></a> - find a Class
+        <a href="create_assignments.php"><strong>Add an Assignment</strong></a>
       </li>
       <li>
-        <a href="update.php"><strong>Update</strong></a> - edit a Class
+        <a href="read_class.php"><strong>Find a Class</strong></a>
       </li>
       <li>
-        <a href="delete.php"><strong>Delete</strong></a> - delete a Class
+        <a href="read_assignments.php"><strong>Find an Assignment</strong></a>
+      </li>
+      <li>
+        <a href="update_class.php"><strong>Edit a Class</strong></a>
+      </li>
+      <li>
+        <a href="update_assignments.php"><strong>Edit an Assignment</strong></a>
+      </li>
+      <li>
+        <a href="delete_class.php"><strong>Delete a Class</strong></a>
+      </li>
+      <li>
+        <a href="delete_assignments.php"><strong>Delete an Assignment</strong></a>
       </li>
     </ul>
 

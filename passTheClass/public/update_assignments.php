@@ -4,7 +4,7 @@ require "../common.php";
     try {
         $connection = new PDO($dsn, $username, $password, $options);
 
-        $sql = "SELECT * FROM Course";
+        $sql = "SELECT * FROM Assignment";
 
         $statement = $connection->prepare($sql);
         $statement->execute();
@@ -17,26 +17,24 @@ require "../common.php";
 
 <?php require "templates/header.php" ?>
 
-<h2>Update course</h2>
+<h2>Update Assignment</h2>
 
 <table>
     <thead>
         <tr>
-            <th>CRN</th>
-            <th>Professor</th>
-            <th>Semester</th>
-            <th>Credit Hours</th>
+            <th>Name</th>
+            <th>Course CRN</th>
+            <th>Percentage</th>
             <th>Edit</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($result as $row) : ?>
             <tr>
-                <td><?php echo escape($row["CRN"]); ?></td>
-                <td><?php echo escape($row["professor"]); ?></td>
-                <td><?php echo escape($row["semester"]); ?></td>
-                <td><?php echo escape($row["creditHours"]); ?></td>
-                <td><a href="update-single.php?CRN=<?php echo escape($row["CRN"]); ?>">Edit</a></td>
+                <td><?php echo escape($row["name"]); ?></td>
+                <td><?php echo escape($row["course_CRN"]); ?></td>
+                <td><?php echo escape($row["percentage"]); ?></td>
+                <td><a href="update-single_assignments.php?name=<?php echo escape($row["name"]); ?>">Edit</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
