@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
       "name"        => $_POST['name'],
       "weightage" => $_POST['weightage'],
     ];
-    $sql = "UPDATE Course
+    $sql = "UPDATE Category
             SET name = :name,
                 weightage = :weightage
             WHERE name = :name";

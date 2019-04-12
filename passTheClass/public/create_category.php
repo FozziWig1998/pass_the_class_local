@@ -42,7 +42,8 @@ if (isset($_POST['submit'])) {
     <label for="name">Name</label>
     <input type="text" name="name" id="name">
     <label for="weightage">Weightage</label>
-    <input type="number" name="weightage" id="weightage">
+    <input type="number" name="weightage" min="0" value="0" step="0.1" id="weightage">
+    <input type="submit" name="submit" value="Submit">
   </form>
 
   <a href="index.php">Back to home</a>
