@@ -62,10 +62,16 @@
         <a href="create_assignments.php"><strong>Add an Assignment</strong></a>
       </li>
       <li>
+        <a href="create_category.php"><strong>Add a Category</strong></a>
+      </li>
+      <li>
         <a href="read_class.php"><strong>Find a Class</strong></a>
       </li>
       <li>
         <a href="read_assignments.php"><strong>Find an Assignment</strong></a>
+      </li>
+      <li>
+        <a href="read_category.php"><strong>Find a Category</strong></a>
       </li>
       <li>
         <a href="update_class.php"><strong>Edit a Class</strong></a>
@@ -74,10 +80,16 @@
         <a href="update_assignments.php"><strong>Edit an Assignment</strong></a>
       </li>
       <li>
+        <a href="update_category.php"><strong>Edit a Category</strong></a>
+      </li>
+      <li>
         <a href="delete_class.php"><strong>Delete a Class</strong></a>
       </li>
       <li>
         <a href="delete_assignments.php"><strong>Delete an Assignment</strong></a>
+      </li>
+      <li>
+        <a href="delete_category.php"><strong>Delete a Category</strong></a>
       </li>
     </ul>
 
