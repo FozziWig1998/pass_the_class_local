@@ -16,10 +16,10 @@ if (isset($_POST['submit'])) {
       "course_CRN" => $_POST['course_CRN'],
       "percentage"  => $_POST['percentage'],
     ];
-    $sql = "UPDATE Course
+    $sql = "UPDATE Assignment
             SET name = :name,
               course_CRN = :course_CRN,
-              percentage = :percentage,
+              percentage = :percentage
             WHERE name = :name";
 
   $statement = $connection->prepare($sql);
