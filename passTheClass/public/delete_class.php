@@ -41,7 +41,7 @@ try {
   <table>
     <thead>
       <tr>
-        <th>name</th>
+        <th>Course Name</th>
         <th>Semester</th>
         <th>Credit Hours</th>
         <th>Professor</th>
