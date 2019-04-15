@@ -12,17 +12,17 @@ if (isset($_POST['submit'])) {
   try {
     $connection = new PDO($dsn, $username, $password, $options);
     $user =[
-      "CRN"        => $_POST['CRN'],
+      "name"        => $_POST['name'],
       "creditHours" => $_POST['creditHours'],
       "semester"  => $_POST['semester'],
       "professor"     => $_POST['professor']
     ];
     $sql = "UPDATE Course
-            SET CRN = :CRN,
+            SET name = :name,
               creditHours = :creditHours,
               semester = :semester,
               professor = :professor
-            WHERE CRN = :CRN";
+            WHERE name = :name";
 
   $statement = $connection->prepare($sql);
   $statement->execute($user);
@@ -31,13 +31,13 @@ if (isset($_POST['submit'])) {
   }
 }
 
-if (isset($_GET['CRN'])) {
+if (isset($_GET['name'])) {
   try {
     $connection = new PDO($dsn, $username, $password, $options);
-    $id = $_GET['CRN'];
-    $sql = "SELECT * FROM Course WHERE CRN = :CRN";
+    $id = $_GET['name'];
+    $sql = "SELECT * FROM Course WHERE name = :name";
     $statement = $connection->prepare($sql);
-    $statement->bindValue(':CRN', $id);
+    $statement->bindValue(':name', $id);
     $statement->execute();
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
@@ -53,7 +53,7 @@ if (isset($_GET['CRN'])) {
 <?php require "templates/header.php"; ?>
 
 <?php if (isset($_POST['submit']) && $statement) : ?>
-	<blockquote><?php echo escape($_POST['CRN']); ?> successfully updated.</blockquote>
+	<blockquote><?php echo escape($_POST['name']); ?> successfully updated.</blockquote>
 <?php endif; ?>
 
 <h2>Edit a user</h2>
@@ -62,7 +62,7 @@ if (isset($_GET['CRN'])) {
     <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
     <?php foreach ($user as $key => $value) : ?>
       <label for="<?php echo $key; ?>"><?php echo ucfirst($key); ?></label>
-	    <input type="text" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="<?php echo escape($value); ?>" <?php echo ($key === 'CRN' ? 'readonly' : null); ?>>
+	    <input type="text" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="<?php echo escape($value); ?>" <?php echo ($key === 'name' ? 'readonly' : null); ?>>
     <?php endforeach; ?>
     <input type="submit" name="submit" value="Submit">
 </form>
