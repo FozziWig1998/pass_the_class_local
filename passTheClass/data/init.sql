@@ -3,11 +3,11 @@ CREATE DATABASE pass_the_class;
 use pass_the_class;
 
 CREATE TABLE Course (
- CRN int(11) NOT NULL,
+ name varchar(20) NOT NULL,
  professor char(20) DEFAULT NULL,
  semester char(10) DEFAULT NULL,
  creditHours int(11) DEFAULT NULL,
- PRIMARY KEY (CRN)
+ PRIMARY KEY (name)
 );
 
 CREATE TABLE Assignment (
