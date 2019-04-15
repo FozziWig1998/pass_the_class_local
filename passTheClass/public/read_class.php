@@ -12,10 +12,10 @@ if (isset($_POST['submit'])) {
     $connection = new PDO($dsn, $username, $password, $options);
     $sql = "SELECT *
             FROM Course
-            WHERE CRN = :CRN";
-    $location = $_POST['CRN'];
+            WHERE name = :name";
+    $location = $_POST['name'];
     $statement = $connection->prepare($sql);
-    $statement->bindParam(':CRN', $location, PDO::PARAM_STR);
+    $statement->bindParam(':name', $location, PDO::PARAM_STR);
     $statement->execute();
     $result = $statement->fetchAll();
   } catch(PDOException $error) {
@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
     <table>
       <thead>
         <tr>
-          <th>CRN</th>
+          <th>name</th>
           <th>Professor</th>
           <th>Semester</th>
           <th>Credit Hours</th>
@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
       <tbody>
       <?php foreach ($result as $row) : ?>
         <tr>
-          <td><?php echo escape($row["CRN"]); ?></td>
+          <td><?php echo escape($row["name"]); ?></td>
           <td><?php echo escape($row["professor"]); ?></td>
           <td><?php echo escape($row["semester"]); ?></td>
           <td><?php echo escape($row["creditHours"]); ?></td>
@@ -51,16 +51,16 @@ if (isset($_POST['submit'])) {
       </tbody>
     </table>
     <?php } else { ?>
-      <blockquote>No results found for <?php echo escape($_POST['CRN']); ?>.</blockquote>
+      <blockquote>No results found for <?php echo escape($_POST['name']); ?>.</blockquote>
     <?php }
 } ?>
 
-<h2>Find Class based on CRN</h2>
+<h2>Find Course based on Course Name</h2>
 
 <form method="post">
   <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
-  <label for="CRN">CRN</label>
-  <input type="text" id="CRN" name="CRN">
+  <label for="name">name</label>
+  <input type="text" id="name" name="name">
   <input type="submit" name="submit" value="View Results">
 </form>
 
