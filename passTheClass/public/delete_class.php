@@ -11,9 +11,9 @@ if (isset($_POST["submit"])) {
     $connection = new PDO($dsn, $username, $password, $options);
 
     $id = $_POST["submit"];
-    $sql = "DELETE FROM Course WHERE CRN = :CRN";
+    $sql = "DELETE FROM Course WHERE name = :name";
     $statement = $connection->prepare($sql);
-    $statement->bindValue(':CRN', $id);
+    $statement->bindValue(':name', $id);
     $statement->execute();
     $success = "Course successfully deleted";
   } catch(PDOException $error) {
@@ -41,7 +41,7 @@ try {
   <table>
     <thead>
       <tr>
-        <th>CRN</th>
+        <th>name</th>
         <th>Semester</th>
         <th>Credit Hours</th>
         <th>Professor</th>
@@ -50,11 +50,11 @@ try {
     <tbody>
     <?php foreach ($result as $row) : ?>
       <tr>
-        <td><?php echo escape($row["CRN"]); ?></td>
+        <td><?php echo escape($row["name"]); ?></td>
         <td><?php echo escape($row["semester"]); ?></td>
         <td><?php echo escape($row["creditHours"]); ?></td>
         <td><?php echo escape($row["professor"]); ?></td>
-        <td><button type="submit" name="submit" value="<?php echo escape($row["CRN"]); ?>">Delete</button></td>
+        <td><button type="submit" name="submit" value="<?php echo escape($row["name"]); ?>">Delete</button></td>
       </tr>
     <?php endforeach; ?>
     </tbody>
