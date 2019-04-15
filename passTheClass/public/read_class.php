@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
     <table>
       <thead>
         <tr>
-          <th>name</th>
+          <th>Course Name</th>
           <th>Professor</th>
           <th>Semester</th>
           <th>Credit Hours</th>
