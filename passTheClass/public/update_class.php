@@ -22,7 +22,7 @@ require "../common.php";
 <table>
     <thead>
         <tr>
-            <th>CRN</th>
+            <th>Course Name</th>
             <th>Professor</th>
             <th>Semester</th>
             <th>Credit Hours</th>
@@ -32,11 +32,11 @@ require "../common.php";
     <tbody>
         <?php foreach ($result as $row) : ?>
             <tr>
-                <td><?php echo escape($row["CRN"]); ?></td>
+                <td><?php echo escape($row["name"]); ?></td>
                 <td><?php echo escape($row["professor"]); ?></td>
                 <td><?php echo escape($row["semester"]); ?></td>
                 <td><?php echo escape($row["creditHours"]); ?></td>
-                <td><a href="update-single_class.php?CRN=<?php echo escape($row["CRN"]); ?>">Edit</a></td>
+                <td><a href="update-single_class.php?CRN=<?php echo escape($row["name"]); ?>">Edit</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
