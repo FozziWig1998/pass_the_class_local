@@ -31,3 +31,33 @@ CREATE TABLE Student (
  YEAR int(11) DEFAULT NULL,
  PRIMARY KEY (netId)
 );
+
+CREATE TABLE Course_Category (
+  Course.name varchar(20) NOT NULL,
+  Category.percentage decimal(5,5) DEFAULT NULL,
+  PRIMARY KEY(Course.name)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+);
+
+CREATE TABLE Student_Class (
+  Student.netId varchar(10) NOT NULL,
+  Course.name int(11) NOT NULL,
+  PRIMARY KEY(Student.netId),
+  KEY Course.name (Course.name)
+  CONSTRAINT Course.name FOREIGN KEY (Course.name) REFERENCES Course (name),
+  CONSTRAINT Student_Class FOREIGN KEY(Student.netId) REFERENCES Student (netId)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+);
+
+CREATE TABLE Category_Assignment (
+ Category.name char(20) NOT NULL,
+ Assignment.name varchar(50) NOT NULL,
+ PRIMARY KEY (Category.name, Assignment.name),
+ KEY Assignment.name (Assignment.name),
+ CONSTRAINT Assignment.name FOREIGN KEY (Assignment.name) REFERENCES Assignment (name),
+ CONSTRAINT Category.name FOREIGN KEY (Category.name) REFERENCES Category (name)
+ ON DELETE CASCADE
+ ON UPDATE CASCADE
+);
