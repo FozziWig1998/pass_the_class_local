@@ -3,12 +3,9 @@ require "../config.php";
 require "../common.php";
     try {
         $connection = new PDO($dsn, $username, $password, $options);
-
-        $sql = "SELECT * FROM Course";
-
+        $sql = "SELECT * FROM Student";
         $statement = $connection->prepare($sql);
         $statement->execute();
-
         $result = $statement->fetchAll();
     } catch (PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
@@ -17,26 +14,21 @@ require "../common.php";
 
 <?php require "templates/header.php" ?>
 
-<h2>Update course</h2>
+<h2>Update Student</h2>
 
 <table>
     <thead>
         <tr>
-            <th>Course Name</th>
-            <th>Professor</th>
-            <th>Semester</th>
-            <th>Credit Hours</th>
-            <th>Edit</th>
+            <th>netId</th>
+            <th>year</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($result as $row) : ?>
             <tr>
-                <td><?php echo escape($row["name"]); ?></td>
-                <td><?php echo escape($row["professor"]); ?></td>
-                <td><?php echo escape($row["semester"]); ?></td>
-                <td><?php echo escape($row["creditHours"]); ?></td>
-                <td><a href="update-single_class.php?CRN=<?php echo escape($row["name"]); ?>">Edit</a></td>
+                <td><?php echo escape($row["netId"]); ?></td>
+                <td><?php echo escape($row["year"]); ?></td>
+                <td><a href="update-single_category.php?name=<?php echo escape($row["netId"]); ?>">Edit</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

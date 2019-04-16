@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     $connection = new PDO($dsn, $username, $password, $options);
 
     $new_user = array(
-      "CRN" => $_POST['CRN'],
+      "name" => $_POST['name'],
       "semester"  => $_POST['semester'],
       "professor"     => $_POST['professor'],
       "creditHours"       => $_POST['creditHours']
@@ -34,15 +34,15 @@ if (isset($_POST['submit'])) {
 <?php require "templates/header.php"; ?>
 
   <?php if (isset($_POST['submit']) && $statement) : ?>
-    <blockquote><?php echo escape($_POST['CRN']); ?> successfully added.</blockquote>
+    <blockquote><?php echo escape($_POST['name']); ?> successfully added.</blockquote>
   <?php endif; ?>
 
   <h2>Add a Class</h2>
 
   <form method="post">
     <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
-    <label for="CRN">CRN</label>
-    <input type="number" name="CRN" id="CRN">
+    <label for="name">Course Name</label>
+    <input type="text" name="name" id="name">
     <label for="semester">Semester</label>
     <input type="text" name="semester" id="semester">
     <label for="professor">Professor</label>

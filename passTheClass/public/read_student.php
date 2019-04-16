@@ -1,7 +1,7 @@
 <?php
 /**
  * Function to query information based on
- * a parameter: in this case, location.
+ * a parameter
  *
  */
 require "../config.php";
@@ -11,11 +11,11 @@ if (isset($_POST['submit'])) {
   try  {
     $connection = new PDO($dsn, $username, $password, $options);
     $sql = "SELECT *
-            FROM Course
-            WHERE name = :name";
-    $location = $_POST['name'];
+            FROM Student
+            WHERE netId = :netId";
+    $location = $_POST['netId'];
     $statement = $connection->prepare($sql);
-    $statement->bindParam(':name', $location, PDO::PARAM_STR);
+    $statement->bindParam(':netId', $location, PDO::PARAM_STR);
     $statement->execute();
     $result = $statement->fetchAll();
   } catch(PDOException $error) {
@@ -33,19 +33,15 @@ if (isset($_POST['submit'])) {
     <table>
       <thead>
         <tr>
-          <th>Course Name</th>
-          <th>Professor</th>
-          <th>Semester</th>
-          <th>Credit Hours</th>
+          <th>Name</th>
+          <th>Weightage</th>
         </tr>
       </thead>
       <tbody>
       <?php foreach ($result as $row) : ?>
         <tr>
-          <td><?php echo escape($row["name"]); ?></td>
-          <td><?php echo escape($row["professor"]); ?></td>
-          <td><?php echo escape($row["semester"]); ?></td>
-          <td><?php echo escape($row["creditHours"]); ?></td>
+          <td><?php echo escape($row["netId"]); ?></td>
+          <td><?php echo escape($row["year"]); ?></td>
         </tr>
       <?php endforeach; ?>
       </tbody>
@@ -55,12 +51,12 @@ if (isset($_POST['submit'])) {
     <?php }
 } ?>
 
-<h2>Find Course based on Course Name</h2>
+<h2>Find Student based on netId</h2>
 
 <form method="post">
   <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
-  <label for="name">name</label>
-  <input type="text" id="name" name="name">
+  <label for="netId">netId</label>
+  <input type="text" id="netId" name="netId">
   <input type="submit" name="submit" value="View Results">
 </form>
 

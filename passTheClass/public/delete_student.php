@@ -1,6 +1,6 @@
 <?php
 /**
- * Delete a user
+ * Delete a Student
  */
 require "../config.php";
 require "../common.php";
@@ -9,20 +9,19 @@ if (isset($_POST["submit"])) {
   if (!hash_equals($_SESSION['csrf'], $_POST['csrf'])) die();
   try {
     $connection = new PDO($dsn, $username, $password, $options);
-
     $id = $_POST["submit"];
-    $sql = "DELETE FROM Course WHERE name = :name";
+    $sql = "DELETE FROM Student WHERE netId = :netId";
     $statement = $connection->prepare($sql);
-    $statement->bindValue(':name', $id);
+    $statement->bindValue(':netId', $id);
     $statement->execute();
-    $success = "Course successfully deleted";
+    $success = "Student successfully deleted";
   } catch(PDOException $error) {
     echo $sql . "<br>" . $error->getMessage();
   }
 }
 try {
   $connection = new PDO($dsn, $username, $password, $options);
-  $sql = "SELECT * FROM Course";
+  $sql = "SELECT * FROM Student";
   $statement = $connection->prepare($sql);
   $statement->execute();
   $result = $statement->fetchAll();
@@ -32,7 +31,7 @@ try {
 ?>
 <?php require "templates/header.php"; ?>
 
-<h2>Delete Courses</h2>
+<h2>Delete Student</h2>
 
 <?php if ($success) echo $success; ?>
 
@@ -41,20 +40,16 @@ try {
   <table>
     <thead>
       <tr>
-        <th>Course Name</th>
-        <th>Semester</th>
-        <th>Credit Hours</th>
-        <th>Professor</th>
+        <th>netId</th>
+        <th>year</th>
       </tr>
     </thead>
     <tbody>
     <?php foreach ($result as $row) : ?>
       <tr>
-        <td><?php echo escape($row["name"]); ?></td>
-        <td><?php echo escape($row["semester"]); ?></td>
-        <td><?php echo escape($row["creditHours"]); ?></td>
-        <td><?php echo escape($row["professor"]); ?></td>
-        <td><button type="submit" name="submit" value="<?php echo escape($row["name"]); ?>">Delete</button></td>
+        <td><?php echo escape($row["netId"]); ?></td>
+        <td><?php echo escape($row["year"]); ?></td>
+        <td><button type="submit" name="submit" value="<?php echo escape($row["netId"]); ?>">Delete</button></td>
       </tr>
     <?php endforeach; ?>
     </tbody>

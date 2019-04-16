@@ -91,6 +91,18 @@
       <li>
         <a href="delete_category.php"><strong>Delete a Category</strong></a>
       </li>
+      <li>
+        <a href="create_student.php"><strong>Add a Student</strong></a>
+      </li>
+      <li>
+         <a href="read_student.php"><strong>Find a Student</strong></a>
+      </li>
+      <li>
+        <a href="update_student.php"><strong>Update a Student</strong></a>
+      </li>
+      <li>
+        <a href="delete_student.php"><strong>Delete a Student</strong></a>
+      </li>
     </ul>
 
     <?php include "templates/footer.php"; ?>
