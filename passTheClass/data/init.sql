@@ -1,4 +1,4 @@
-CREATE DATABASE pass_the_class;
+-- CREATE DATABASE pass_the_class;
 
 use pass_the_class;
 
@@ -11,12 +11,11 @@ CREATE TABLE Course (
 );
 
 CREATE TABLE Assignment (
- name varchar(50) NOT NULL,
- course_CRN int(11) NOT NULL,
+ assignment_name varchar(50) NOT NULL,
+ course_name varchar(20) NOT NULL,
  percentage decimal(5,5) DEFAULT NULL,
- PRIMARY KEY (name,course_CRN),
- KEY course_CRN (course_CRN),
- CONSTRAINT course_CRN FOREIGN KEY (course_CRN) REFERENCES Course (CRN)
+ PRIMARY KEY (name, course_name),
+ CONSTRAINT course_assignment FOREIGN KEY (course_name) REFERENCES Course (name)
 );
 
 CREATE TABLE Category (
@@ -34,7 +33,7 @@ CREATE TABLE Student (
 
 CREATE TABLE Course_Category (
   course_name varchar(20) NOT NULL,
-  category_name decimal(5,5) DEFAULT NULL,
+  category_name char(20) DEFAULT NULL,
   PRIMARY KEY(course_name)
   CONSTRAINT course_name FOREIGN KEY(course_name) REFERENCES Course(name),
   CONSTRAINT category_name FOREIGN KEY(category_name) REFERENCES Category(name)
@@ -44,11 +43,10 @@ CREATE TABLE Course_Category (
 
 CREATE TABLE Student_Class (
   netId varchar(10) NOT NULL,
-  name int(11) NOT NULL,
-  PRIMARY KEY(netId),
-  KEY name (name)
-  CONSTRAINT name FOREIGN KEY (name) REFERENCES Course (name),
-  CONSTRAINT Student_Class FOREIGN KEY(netId) REFERENCES Student (netId)
+  name varchar(20) NOT NULL,
+  PRIMARY KEY(netId, name),
+  FOREIGN KEY (name) REFERENCES Course (name),
+  FOREIGN KEY(netId) REFERENCES Student (netId)
   ON DELETE CASCADE
   ON UPDATE CASCADE
 );
@@ -57,9 +55,8 @@ CREATE TABLE Category_Assignment (
  category_name char(20) NOT NULL,
  assignment_name varchar(50) NOT NULL,
  PRIMARY KEY (category_name, assignment_name),
- KEY assignment_name (assignment_name),
- CONSTRAINT assignment_name FOREIGN KEY (assignment_name) REFERENCES Assignment (name),
- CONSTRAINT category_name FOREIGN KEY (category_name) REFERENCES Category (name)
+ FOREIGN KEY (assignment_name) REFERENCES Assignment (name),
+ FOREIGN KEY (category_name) REFERENCES Category (name)
  ON DELETE CASCADE
  ON UPDATE CASCADE
 );
