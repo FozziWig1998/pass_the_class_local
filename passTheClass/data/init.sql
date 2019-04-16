@@ -34,7 +34,7 @@ CREATE TABLE Student (
 CREATE TABLE Course_Category (
   course_name varchar(20) NOT NULL,
   category_name char(20) DEFAULT NULL,
-  PRIMARY KEY(course_name)
+  PRIMARY KEY(course_name),
   CONSTRAINT course_name FOREIGN KEY(course_name) REFERENCES Course(name),
   CONSTRAINT category_name FOREIGN KEY(category_name) REFERENCES Category(name)
   ON DELETE CASCADE
