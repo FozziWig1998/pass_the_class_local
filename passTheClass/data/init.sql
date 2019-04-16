@@ -55,7 +55,7 @@ CREATE TABLE Category_Assignment (
  category_name char(20) NOT NULL,
  assignment_name varchar(50) NOT NULL,
  PRIMARY KEY (category_name, assignment_name),
- FOREIGN KEY (assignment_name) REFERENCES Assignment (name),
+ FOREIGN KEY (assignment_name) REFERENCES Assignment (assignment_name),
  FOREIGN KEY (category_name) REFERENCES Category (name)
  ON DELETE CASCADE
  ON UPDATE CASCADE
