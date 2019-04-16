@@ -14,7 +14,7 @@ CREATE TABLE Assignment (
  assignment_name varchar(50) NOT NULL,
  course_name varchar(20) NOT NULL,
  percentage decimal(5,5) DEFAULT NULL,
- PRIMARY KEY (name, course_name),
+ PRIMARY KEY (assignment_name, course_name),
  CONSTRAINT course_assignment FOREIGN KEY (course_name) REFERENCES Course (name)
 );
 
