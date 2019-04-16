@@ -5,7 +5,7 @@
   *
   */
 
-$host       = "localhost";
+$host       = "192.168.101.40:8889";
 $username   = "root";
 $password   = "root";
 $dbname     = "pass_the_class"; // will use later
