@@ -29,9 +29,10 @@ require "../common.php";
     <tbody>
         <?php foreach ($result as $row) : ?>
             <tr>
-                <td><?php echo escape($row["name"]); ?></td>
+                <td><?php echo escape($row["id"]); ?></td>
+                <td><?php echo escape($row["course_name"]); ?></td>
                 <td><?php echo escape($row["weightage"]); ?></td>
-                <td><a href="update-single_category.php?name=<?php echo escape($row["name"]); ?>">Edit</a></td>
+                <td><a href="update-single_category.php?id=<?php echo escape($row["id"]); ?>">Edit</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

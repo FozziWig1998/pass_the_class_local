@@ -67,12 +67,12 @@
       <li>
         <a href="read_class.php"><strong>Find a Class</strong></a>
       </li>
-      <li>
+      <!-- <li>
         <a href="read_assignments.php"><strong>Find an Assignment</strong></a>
-      </li>
-      <li>
+      </li> -->
+      <!-- <li>
         <a href="read_category.php"><strong>Find a Category</strong></a>
-      </li>
+      </li> -->
       <li>
         <a href="update_class.php"><strong>Edit a Class</strong></a>
       </li>
