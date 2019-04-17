@@ -106,6 +106,10 @@
       <li>
         <a href="professors.php"><strong>Get all Professors</strong></a>
       </li>
+      <br></br>
+      <li>
+        <a href="study_buddies.php"><strong>Find Study Buddies in your Classes!</strong></a>
+      </li>
     </ul>
 
     <?php include "templates/footer.php"; ?>

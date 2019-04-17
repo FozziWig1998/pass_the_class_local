@@ -31,7 +31,7 @@ CREATE TABLE Category (
 CREATE TABLE Student (
  id INT(11) UNSIGNED AUTO_INCREMENT,
  netId varchar(10) NOT NULL,
- YEAR int(11) DEFAULT NULL,
+ curr_year int(11) DEFAULT NULL,
  PRIMARY KEY (netId),
  KEY (id)
 );

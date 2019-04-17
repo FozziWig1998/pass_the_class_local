@@ -20,7 +20,10 @@ if (isset($_POST['submit'])) {
     $netId = $_POST['netId'];
 
     $sql = "
-      INSERT INTO Course (name, professor, semester, creditHours) VALUES (:name, :professor, :semester, :creditHours);
+      INSERT IGNORE INTO Course (name, professor, semester, creditHours) 
+      VALUES (:name, :professor, :semester, :creditHours);
+
+
       INSERT INTO Student_Class (netId, name) VALUES (:netId, :name);
       ";
 
@@ -32,7 +35,7 @@ if (isset($_POST['submit'])) {
     $statement->bindValue(':creditHours', $creditHours);
     $statement->bindValue(':netId', $netId);
 
-    
+
     $statement->execute();
   } catch(PDOException $error) {
       echo $sql . "<br>" . $error->getMessage();
