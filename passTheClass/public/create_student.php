@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $connection = new PDO($dsn, $username, $password, $options);
     $new_user = array(
       "netId" => $_POST['netId'],
-      "year"  => $_POST['year'],
+      "YEAR"  => $_POST['YEAR'],
     );
     $sql = sprintf(
       "INSERT INTO %s (%s) values (%s)",
@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 ?>
 <?php include "templates/header.php"; ?>
         <?php if (isset($_POST['submit']) && $statement) : ?>
-        <blockquote><?php echo escape($_POST['name']); ?> successfully added.</blockquote>
+        <blockquote><?php echo escape($_POST['netId']); ?> successfully added.</blockquote>
         <?php endif; ?>
 
         <h2>Add a Student</h2>
@@ -33,8 +33,8 @@ if (isset($_POST['submit'])) {
         <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
         <label for="netId">netId</label>
         <input type="text" name="netId" id="netId">
-        <label for="year">year</label>
-        <input type="number" name="year" min="1" value="1" step="1" id="year">
+        <label for="YEAR">year</label>
+        <input type="number" name="YEAR" min="1" value="1" step="1" id="YEAR">
         <input type="submit" name="submit" value="Submit">
     </form>
 

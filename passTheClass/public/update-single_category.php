@@ -12,9 +12,9 @@ if (isset($_POST['submit'])) {
   try {
     $connection = new PDO($dsn, $username, $password, $options);
     $user =[
-      "id"                    => $_POST['id'],
-      "course_name"        => $_POST['course_name'],
-      "weightage" => $_POST['weightage'],
+      "id"            => $_POST['id'],
+      "name"          => $_POST['name'],
+      "weightage"     => $_POST['weightage'],
     ];
     $sql = "UPDATE Category
             SET name = :name,
@@ -50,7 +50,7 @@ if (isset($_GET['id'])) {
 <?php require "templates/header.php"; ?>
 
 <?php if (isset($_POST['submit']) && $statement) : ?>
-	<blockquote><?php echo escape($_POST['course_name']); ?> successfully updated.</blockquote>
+	<blockquote><?php echo escape($_POST['name']); ?> successfully updated.</blockquote>
 <?php endif; ?>
 
 <h2>Edit a user</h2>

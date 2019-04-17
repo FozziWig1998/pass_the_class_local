@@ -30,7 +30,6 @@ require "../common.php";
     <tbody>
         <?php foreach ($result as $row) : ?>
             <tr>
-                <td><?php echo escape($row["id"]); ?></td>
                 <td><?php echo escape($row["assignment_name"]); ?></td>
                 <td><?php echo escape($row["percentage"]); ?></td>
                 <td><a href="update-single_assignments.php?id=<?php echo escape($row["id"]); ?>">Edit</a></td>

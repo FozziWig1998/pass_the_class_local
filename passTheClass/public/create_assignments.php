@@ -13,23 +13,23 @@ if (isset($_POST['submit'])) {
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-      $assignment_name = $_POST['assignment_name'];
-      $course_name = $_POST['course_name'];
-      $percentage = $_POST['percentage'];
-      $category_name = $_POST['category_name'];
+    $assignment_name = $_POST['assignment_name'];
+    $course_name = $_POST['course_name'];
+    $percentage = $_POST['percentage'];
+    $category_name = $_POST['category_name'];
 
-      $sql = "
-        INSERT INTO Assignment (assignment_name, percentage) VALUES (:assignment_name, :percentage);
-        INSERT INTO Category_Assignment (assignment_name, category_name) VALUES (:assignment_name, :category_name);
-        ";
+    $sql = "
+      INSERT INTO Assignment (assignment_name, percentage) VALUES (:assignment_name, :percentage);
+      INSERT INTO Category_Assignment (assignment_name, category_name) VALUES (:assignment_name, :category_name);
+      ";
 
-      $statement = $connection->prepare($sql);
-      $statement->bindValue(':assignment_name', $assignment_name);
-      $statement->bindValue(':course_name', $course_name);
-      $statement->bindValue(':percentage', $percentage);
-      $statement->bindValue(':category_name', $category_name);
+    $statement = $connection->prepare($sql);
+    $statement->bindValue(':assignment_name', $assignment_name);
+    $statement->bindValue(':course_name', $course_name);
+    $statement->bindValue(':percentage', $percentage);
+    $statement->bindValue(':category_name', $category_name);
 
-      $statement->execute();
+    $statement->execute();
 
 
       // $connection = null;

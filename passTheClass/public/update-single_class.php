@@ -15,8 +15,8 @@ if (isset($_POST['submit'])) {
       "id"          => $_POST['id'],
       "name"        => $_POST['name'],
       "creditHours" => $_POST['creditHours'],
-      "semester"  => $_POST['semester'],
-      "professor"     => $_POST['professor']
+      "semester"    => $_POST['semester'],
+      "professor"   => $_POST['professor']
     ];
     $sql = "UPDATE Course
             SET name = :name,
