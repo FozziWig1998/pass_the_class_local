@@ -55,9 +55,12 @@
     </table>
 
     <ul>
-      <li>
+      <br></br>
+      <button type="button" class="btn btn-primary" onclick="window.location.href = 'update_class.php';">Manage Classes</button>
+
+      <!-- <li>
         <a href="create_class.php"><strong>Add a Class</strong></a>
-      </li>
+      </li> -->
       <li>
         <a href="create_assignments.php"><strong>Add an Assignment</strong></a>
       </li>
@@ -73,18 +76,18 @@
       <!-- <li>
         <a href="read_category.php"><strong>Find a Category</strong></a>
       </li> -->
-      <li>
+      <!-- <li>
         <a href="update_class.php"><strong>Edit a Class</strong></a>
-      </li>
+      </li> -->
       <li>
         <a href="update_assignments.php"><strong>Edit an Assignment</strong></a>
       </li>
       <li>
         <a href="update_category.php"><strong>Edit a Category</strong></a>
       </li>
-      <li>
+      <!-- <li>
         <a href="delete_class.php"><strong>Delete a Class</strong></a>
-      </li>
+      </li> -->
       <li>
         <a href="delete_assignments.php"><strong>Delete an Assignment</strong></a>
       </li>
@@ -103,10 +106,12 @@
       <li>
         <a href="delete_student.php"><strong>Delete a Student</strong></a>
       </li>
+
+
+        <br></br>
       <li>
         <a href="professors.php"><strong>Get all Professors</strong></a>
       </li>
-      <br></br>
       <li>
         <a href="study_buddies.php"><strong>Find Study Buddies in your Classes!</strong></a>
       </li>

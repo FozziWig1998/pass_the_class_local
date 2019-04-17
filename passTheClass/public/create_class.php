@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
     $netId = $_POST['netId'];
 
     $sql = "
-      INSERT IGNORE INTO Course (name, professor, semester, creditHours) 
+      INSERT IGNORE INTO Course (name, professor, semester, creditHours)
       VALUES (:name, :professor, :semester, :creditHours);
 
 
@@ -65,6 +65,7 @@ if (isset($_POST['submit'])) {
     <input type="submit" name="submit" value="Submit">
   </form>
 
-  <a href="index.php">Back to home</a>
+  <button type="button" class="btn btn-primary" onclick="window.location.href = 'update_class.php';">View Classes</button>
+  <button type="button" class="btn btn-primary" onclick="window.location.href = 'index.php';">Go Home</button>
 
 <?php require "templates/footer.php"; ?>

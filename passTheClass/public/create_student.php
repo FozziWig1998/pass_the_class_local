@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $connection = new PDO($dsn, $username, $password, $options);
     $new_user = array(
       "netId" => $_POST['netId'],
-      "YEAR"  => $_POST['curr_year'],
+      "curr_year"  => $_POST['curr_year'],
     );
     $sql = sprintf(
       "INSERT INTO %s (%s) values (%s)",
