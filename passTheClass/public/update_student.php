@@ -20,7 +20,7 @@ require "../common.php";
     <thead>
         <tr>
             <th>netId</th>
-            <th>year</th>
+            <th>Year</th>
         </tr>
     </thead>
     <tbody>

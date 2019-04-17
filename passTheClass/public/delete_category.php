@@ -11,9 +11,9 @@ if (isset($_POST["submit"])) {
     $connection = new PDO($dsn, $username, $password, $options);
 
     $id = $_POST["submit"];
-    $sql = "DELETE FROM Category WHERE name = :name";
+    $sql = "DELETE FROM Category WHERE id = :id";
     $statement = $connection->prepare($sql);
-    $statement->bindValue(':name', $id);
+    $statement->bindValue(':id', $id);
     $statement->execute();
     $success = "Category successfully deleted";
   } catch(PDOException $error) {
@@ -48,9 +48,10 @@ try {
     <tbody>
     <?php foreach ($result as $row) : ?>
       <tr>
+        <td><?php echo escape($row["id"]); ?></td>
         <td><?php echo escape($row["name"]); ?></td>
         <td><?php echo escape($row["weightage"]); ?></td>
-        <td><button type="submit" name="submit" value="<?php echo escape($row["name"]); ?>">Delete</button></td>
+        <td><button type="submit" name="submit" value="<?php echo escape($row["id"]); ?>">Delete</button></td>
       </tr>
     <?php endforeach; ?>
     </tbody>

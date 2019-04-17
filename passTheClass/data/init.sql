@@ -1,8 +1,8 @@
 use pass_the_class;
 
 CREATE TABLE Course (
- name varchar(20) NOT NULL,
  id INT(11) UNSIGNED AUTO_INCREMENT,
+ name varchar(20) NOT NULL,
  professor char(20) DEFAULT NULL,
  semester char(15) DEFAULT NULL,
  creditHours int(11) DEFAULT NULL,
@@ -12,16 +12,16 @@ CREATE TABLE Course (
 
 
 CREATE TABLE Assignment (
- assignment_name varchar(50) NOT NULL,
  id INT(11) UNSIGNED AUTO_INCREMENT,
+ assignment_name varchar(50) NOT NULL,
  percentage decimal(5,5) DEFAULT NULL,
  PRIMARY KEY (assignment_name),
  KEY (id)
 );
 
 CREATE TABLE Category (
- name char(20) NOT NULL,
  id INT(11) UNSIGNED AUTO_INCREMENT,
+ name char(20) NOT NULL,
  weightage decimal(2,2) DEFAULT NULL,
  PRIMARY KEY (name),
  KEY (id)
@@ -29,8 +29,8 @@ CREATE TABLE Category (
 
 
 CREATE TABLE Student (
- netId varchar(10) NOT NULL,
  id INT(11) UNSIGNED AUTO_INCREMENT,
+ netId varchar(10) NOT NULL,
  YEAR int(11) DEFAULT NULL,
  PRIMARY KEY (netId),
  KEY (id)

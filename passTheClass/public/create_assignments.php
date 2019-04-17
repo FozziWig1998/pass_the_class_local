@@ -13,23 +13,23 @@ if (isset($_POST['submit'])) {
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-      $assignment_name = $_POST['assignment_name'];
-      $course_name = $_POST['course_name'];
-      $percentage = $_POST['percentage'];
-      $category_name = $_POST['category_name'];
+    $assignment_name = $_POST['assignment_name'];
+    $course_name = $_POST['course_name'];
+    $percentage = $_POST['percentage'];
+    $category_name = $_POST['category_name'];
 
-      $sql = "
-        INSERT INTO Assignment (assignment_name, course_name, percentage) VALUES (:assignment_name, :course_name, :percentage);
-        INSERT INTO Category_Assignment (assignment_name, category_name) VALUES (:assignment_name, :category_name);
-        ";
+    $sql = "
+      INSERT INTO Assignment (assignment_name, percentage) VALUES (:assignment_name, :percentage);
+      INSERT INTO Category_Assignment (assignment_name, category_name) VALUES (:assignment_name, :category_name);
+      ";
 
-      $statement = $connection->prepare($sql);
-      $statement->bindValue(':assignment_name', $assignment_name);
-      $statement->bindValue(':course_name', $course_name);
-      $statement->bindValue(':percentage', $percentage);
-      $statement->bindValue(':category_name', $category_name);
+    $statement = $connection->prepare($sql);
+    $statement->bindValue(':assignment_name', $assignment_name);
+    $statement->bindValue(':course_name', $course_name);
+    $statement->bindValue(':percentage', $percentage);
+    $statement->bindValue(':category_name', $category_name);
 
-      $statement->execute();
+    $statement->execute();
 
 
       // $connection = null;
@@ -82,8 +82,6 @@ if (isset($_POST['submit'])) {
     <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
     <label for="assignment_name">Name</label>
     <input type="text" name="assignment_name" id="assignment_name">
-    <label for="course_name">Course Name</label>
-    <input type="text" name="course_name" id="course_name">
     <label for="percentage">Percentage</label>
     <input type="number" name="percentage" min="0" value="0" step="0.05" id="percentage">
     <label for="Category">Category</label>

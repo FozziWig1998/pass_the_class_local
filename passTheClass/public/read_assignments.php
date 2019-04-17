@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     $connection = new PDO($dsn, $username, $password, $options);
     $sql = "SELECT *
             FROM Assignment
-            WHERE name = :name AND course_CRN = :course_CRN";
+            WHERE name = :name AND course_name = :course_CRN";
     $location = $_POST['name'];
     $course_crn = $_POST['course_CRN'];
     $statement = $connection->prepare($sql);

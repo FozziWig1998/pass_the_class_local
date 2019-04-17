@@ -10,20 +10,25 @@ if (isset($_POST['submit'])) {
   if (!hash_equals($_SESSION['csrf'], $_POST['csrf'])) die();
   try  {
     $connection = new PDO($dsn, $username, $password, $options);
+    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $new_user = array(
-      "name" => $_POST['name'],
-      "weightage"  => $_POST['weightage'],
-    );
-    $sql = sprintf(
-      "INSERT INTO %s (%s) values (%s)",
-      "Category",
-      implode(", ", array_keys($new_user)),
-      ":" . implode(", :", array_keys($new_user))
-    );
+
+    $name = $_POST['name'];
+    $course_name = $_POST['course_name'];
+    $weightage = $_POST['weightage'];
+
+    $sql = "
+    INSERT INTO Category (name, weightage) VALUES (:name, :weightage);
+    INSERT INTO Course_Category (course_name, category_name) VALUES (:course_name, :name);
+    ";
 
     $statement = $connection->prepare($sql);
-    $statement->execute($new_user);
+
+    $statement->bindValue(':name', name);
+    $statement->bindValue(':course_name', $course_name);
+    $statement->bindValue(':weightage', $weightage);
+
+    $statement->execute();
   } catch(PDOException $error) {
       echo $sql . "<br>" . $error->getMessage();
   }
@@ -42,7 +47,9 @@ if (isset($_POST['submit'])) {
     <label for="name">Name</label>
     <input type="text" name="name" id="name">
     <label for="weightage">Weightage</label>
-    <input type="number" name="weightage" min="0" value="0" step="0.1" id="weightage">
+    <input type="number" name="weightage" min="0" value="0" step="0.05" id="weightage">
+    <label for="course_name">Course Name</label>
+    <input type="text" name="course_name" id="course_name">
     <input type="submit" name="submit" value="Submit">
   </form>
 

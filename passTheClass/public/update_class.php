@@ -36,7 +36,7 @@ require "../common.php";
                 <td><?php echo escape($row["professor"]); ?></td>
                 <td><?php echo escape($row["semester"]); ?></td>
                 <td><?php echo escape($row["creditHours"]); ?></td>
-                <td><a href="update-single_class.php?CRN=<?php echo escape($row["name"]); ?>">Edit</a></td>
+                <td><a href="update-single_class.php?id=<?php echo escape($row["id"]); ?>">Edit</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

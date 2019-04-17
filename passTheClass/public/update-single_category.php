@@ -12,13 +12,14 @@ if (isset($_POST['submit'])) {
   try {
     $connection = new PDO($dsn, $username, $password, $options);
     $user =[
-      "name"        => $_POST['name'],
-      "weightage" => $_POST['weightage'],
+      "id"            => $_POST['id'],
+      "name"          => $_POST['name'],
+      "weightage"     => $_POST['weightage'],
     ];
     $sql = "UPDATE Category
             SET name = :name,
                 weightage = :weightage
-            WHERE name = :name";
+            WHERE id = :id";
 
   $statement = $connection->prepare($sql);
   $statement->execute($user);
@@ -27,13 +28,13 @@ if (isset($_POST['submit'])) {
   }
 }
 
-if (isset($_GET['name'])) {
+if (isset($_GET['id'])) {
   try {
     $connection = new PDO($dsn, $username, $password, $options);
-    $id = $_GET['name'];
-    $sql = "SELECT * FROM Category WHERE name = :name";
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM Category WHERE id = :id";
     $statement = $connection->prepare($sql);
-    $statement->bindValue(':name', $id);
+    $statement->bindValue(':id', $id);
     $statement->execute();
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
@@ -58,7 +59,7 @@ if (isset($_GET['name'])) {
     <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
     <?php foreach ($user as $key => $value) : ?>
       <label for="<?php echo $key; ?>"><?php echo ucfirst($key); ?></label>
-	    <input type="text" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="<?php echo escape($value); ?>" <?php echo ($key === 'CRN' ? 'readonly' : null); ?>>
+	    <input type="text" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="<?php echo escape($value); ?>" <?php echo ($key === 'id' ? 'readonly' : null); ?>>
     <?php endforeach; ?>
     <input type="submit" name="submit" value="Submit">
 </form>
