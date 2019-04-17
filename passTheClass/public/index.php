@@ -36,7 +36,7 @@
     <table>
         <thead>
             <tr>
-                <th>CRN</th>
+                <th>Course</th>
                 <th>Professor</th>
                 <th>Semester</th>
                 <th>Credit Hours</th>
@@ -45,7 +45,7 @@
         <tbody>
             <?php foreach ($result as $row) : ?>
                 <tr>
-                    <td><?php echo escape($row["CRN"]); ?></td>
+                    <td><?php echo escape($row["name"]); ?></td>
                     <td><?php echo escape($row["professor"]); ?></td>
                     <td><?php echo escape($row["semester"]); ?></td>
                     <td><?php echo escape($row["creditHours"]); ?></td>
@@ -102,6 +102,9 @@
       </li>
       <li>
         <a href="delete_student.php"><strong>Delete a Student</strong></a>
+      </li>
+      <li>
+        <a href="professors.php"><strong>Get all Professors</strong></a>
       </li>
     </ul>
 
