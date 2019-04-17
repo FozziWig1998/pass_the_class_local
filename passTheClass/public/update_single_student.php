@@ -11,26 +11,28 @@ if (isset($_POST['submit'])) {
   try {
     $connection = new PDO($dsn, $username, $password, $options);
     $user =[
-      "netId"        => $_POST['netId'],
-      "year" => $_POST['YEAR'],
+      "id" => $_POST['id'],
+      "netId" => $_POST['netId'],
+      "year" => $_POST['year']
     ];
     $sql = "UPDATE Student
-            SET netId = :netId,
+            SET id = :id,
+                netId = :netId,
                 year = :year
-            WHERE netId = :netId";
+            WHERE id = :id";
   $statement = $connection->prepare($sql);
   $statement->execute($user);
   } catch(PDOException $error) {
       echo $sql . "<br>" . $error->getMessage();
   }
 }
-if (isset($_GET['netId'])) {
+if (isset($_GET['id'])) {
   try {
     $connection = new PDO($dsn, $username, $password, $options);
-    $id = $_GET['netId'];
-    $sql = "SELECT * FROM Student WHERE netId = :netId";
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM Student WHERE id = :id";
     $statement = $connection->prepare($sql);
-    $statement->bindValue(':netId', $id);
+    $statement->bindValue(':id', $id);
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
   } catch(PDOException $error) {

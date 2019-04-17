@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
       <?php foreach ($result as $row) : ?>
         <tr>
           <td><?php echo escape($row["netId"]); ?></td>
-          <td><?php echo escape($row["YEAR"]); ?></td>
+          <td><?php echo escape($row["year"]); ?></td>
         </tr>
       <?php endforeach; ?>
       </tbody>

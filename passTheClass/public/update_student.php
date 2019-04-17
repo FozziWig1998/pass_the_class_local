@@ -27,8 +27,8 @@ require "../common.php";
         <?php foreach ($result as $row) : ?>
             <tr>
                 <td><?php echo escape($row["netId"]); ?></td>
-                <td><?php echo escape($row["YEAR"]); ?></td>
-                <td><a href="update_single_student.php?netId=<?php echo escape($row["netId"]); ?>">Edit</a></td>
+                <td><?php echo escape($row["year"]); ?></td>
+                <td><a href="update_single_student.php?id=<?php echo escape($row["id"]); ?>">Edit</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
