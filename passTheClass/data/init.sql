@@ -5,7 +5,7 @@ use pass_the_class;
 CREATE TABLE Course (
  name varchar(20) NOT NULL,
  professor char(20) DEFAULT NULL,
- semester char(10) DEFAULT NULL,
+ semester char(15) DEFAULT NULL,
  creditHours int(11) DEFAULT NULL,
  PRIMARY KEY (name)
 );
