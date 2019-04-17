@@ -48,7 +48,7 @@ try {
     <?php foreach ($result as $row) : ?>
       <tr>
         <td><?php echo escape($row["netId"]); ?></td>
-        <td><?php echo escape($row["year"]); ?></td>
+        <td><?php echo escape($row["YEAR"]); ?></td>
         <td><button type="submit" name="submit" value="<?php echo escape($row["netId"]); ?>">Delete</button></td>
       </tr>
     <?php endforeach; ?>

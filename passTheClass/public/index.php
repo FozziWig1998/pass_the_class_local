@@ -36,7 +36,7 @@
     <table>
         <thead>
             <tr>
-                <th>CRN</th>
+                <th>Course Name</th>
                 <th>Professor</th>
                 <th>Semester</th>
                 <th>Credit Hours</th>
@@ -45,7 +45,7 @@
         <tbody>
             <?php foreach ($result as $row) : ?>
                 <tr>
-                    <td><?php echo escape($row["CRN"]); ?></td>
+                    <td><?php echo escape($row["name"]); ?></td>
                     <td><?php echo escape($row["professor"]); ?></td>
                     <td><?php echo escape($row["semester"]); ?></td>
                     <td><?php echo escape($row["creditHours"]); ?></td>
