@@ -9,8 +9,7 @@ table {
 	border-spacing: 10;
 }
 
-td,
-th {
+td, th {
 	padding: 5px;
 	border-bottom: 1px solid #aaa;
 }

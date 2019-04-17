@@ -36,7 +36,7 @@
     <table>
         <thead>
             <tr>
-                <th>Course Name</th>
+                <th>Course</th>
                 <th>Professor</th>
                 <th>Semester</th>
                 <th>Credit Hours</th>
@@ -102,6 +102,9 @@
       </li>
       <li>
         <a href="delete_student.php"><strong>Delete a Student</strong></a>
+      </li>
+      <li>
+        <a href="professors.php"><strong>Get all Professors</strong></a>
       </li>
     </ul>
 
