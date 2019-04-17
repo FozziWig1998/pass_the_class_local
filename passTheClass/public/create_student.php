@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 ?>
 <?php include "templates/header.php"; ?>
         <?php if (isset($_POST['submit']) && $statement) : ?>
-        <blockquote><?php echo escape($_POST['name']); ?> successfully added.</blockquote>
+        <blockquote><?php echo escape($_POST['netId']); ?> successfully added.</blockquote>
         <?php endif; ?>
 
         <h2>Add a Student</h2>

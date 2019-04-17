@@ -28,7 +28,7 @@ CREATE TABLE Category (
 
 CREATE TABLE Student (
  netId varchar(10) NOT NULL,
- YEAR int(11) DEFAULT NULL,
+ year int(11) DEFAULT NULL,
  PRIMARY KEY (netId)
 );
 
