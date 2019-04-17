@@ -33,21 +33,21 @@ if (isset($_POST['submit'])) {
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Weightage</th>
+          <th>Net ID</th>
+          <th>Year</th>
         </tr>
       </thead>
       <tbody>
       <?php foreach ($result as $row) : ?>
         <tr>
           <td><?php echo escape($row["netId"]); ?></td>
-          <td><?php echo escape($row["year"]); ?></td>
+          <td><?php echo escape($row["YEAR"]); ?></td>
         </tr>
       <?php endforeach; ?>
       </tbody>
     </table>
     <?php } else { ?>
-      <blockquote>No results found for <?php echo escape($_POST['name']); ?>.</blockquote>
+      <blockquote>No results found for <?php echo escape($_POST['netId']); ?>.</blockquote>
     <?php }
 } ?>
 

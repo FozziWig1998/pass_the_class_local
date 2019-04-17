@@ -12,15 +12,15 @@ if (isset($_POST['submit'])) {
   try {
     $connection = new PDO($dsn, $username, $password, $options);
     $user =[
-      "name"        => $_POST['name'],
-      "course_CRN" => $_POST['course_CRN'],
-      "percentage"  => $_POST['percentage'],
+      "assignment_name"       => $_POST['assignment_name'],
+      "course_name"            => $_POST['course_name'],
+      "percentage"            => $_POST['percentage'],
     ];
     $sql = "UPDATE Assignment
-            SET name = :name,
-              course_CRN = :course_CRN,
+            SET assignment_name = :assignment_name,
+              course_name = :course_name,
               percentage = :percentage
-            WHERE name = :name";
+            WHERE assignment_name = :assignment_name AND course_name = :course_name";
 
   $statement = $connection->prepare($sql);
   $statement->execute($user);
@@ -29,13 +29,13 @@ if (isset($_POST['submit'])) {
   }
 }
 
-if (isset($_GET['name'])) {
+if (isset($_GET['assignment_name'])) {
   try {
     $connection = new PDO($dsn, $username, $password, $options);
-    $id = $_GET['name'];
-    $sql = "SELECT * FROM Assignment WHERE name = :name";
+    $id = $_GET['assignment_name'];
+    $sql = "SELECT * FROM Assignment WHERE assignment_name = :assignment_name";
     $statement = $connection->prepare($sql);
-    $statement->bindValue(':name', $id);
+    $statement->bindValue(':assignment_name', $id);
     $statement->execute();
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
@@ -51,7 +51,7 @@ if (isset($_GET['name'])) {
 <?php require "templates/header.php"; ?>
 
 <?php if (isset($_POST['submit']) && $statement) : ?>
-	<blockquote><?php echo escape($_POST['name']); ?> successfully updated.</blockquote>
+	<blockquote><?php echo escape($_POST['assignment_name']); ?> successfully updated.</blockquote>
 <?php endif; ?>
 
 <h2>Edit an Assignment</h2>
