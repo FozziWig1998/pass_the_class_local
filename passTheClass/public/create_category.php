@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
 
     $statement = $connection->prepare($sql);
 
-    $statement->bindValue(':name', name);
+    $statement->bindValue(':name', $name);
     $statement->bindValue(':course_name', $course_name);
     $statement->bindValue(':weightage', $weightage);
 

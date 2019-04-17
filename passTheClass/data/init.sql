@@ -14,7 +14,7 @@ CREATE TABLE Course (
 CREATE TABLE Assignment (
  id INT(11) UNSIGNED AUTO_INCREMENT,
  assignment_name varchar(50) NOT NULL,
- percentage decimal(5,5) DEFAULT NULL,
+ percentage decimal(6,3) DEFAULT NULL,
  PRIMARY KEY (assignment_name),
  KEY (id)
 );
@@ -22,7 +22,7 @@ CREATE TABLE Assignment (
 CREATE TABLE Category (
  id INT(11) UNSIGNED AUTO_INCREMENT,
  name char(20) NOT NULL,
- weightage decimal(2,2) DEFAULT NULL,
+ weightage decimal(6,3) DEFAULT NULL,
  PRIMARY KEY (name),
  KEY (id)
 );
