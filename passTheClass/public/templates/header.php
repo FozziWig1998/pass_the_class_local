@@ -49,7 +49,7 @@
     <div class="sidenav">
       <table>
           <thead>
-            <h5>Upcomming Assignments</h5>
+            <h5>Upcoming Assignments</h5>
               <tr>
                   <th>Name</th>
                   <th>Due Date</th>
