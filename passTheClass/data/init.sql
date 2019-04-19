@@ -1,5 +1,13 @@
 use pass_the_class;
 
+CREATE TABLE Student (
+ id INT(11) UNSIGNED AUTO_INCREMENT,
+ netId varchar(10) NOT NULL,
+ YEAR int(11) DEFAULT NULL,
+ PRIMARY KEY (netId),
+ KEY (id)
+);
+
 CREATE TABLE Course (
  id INT(11) UNSIGNED AUTO_INCREMENT,
  name varchar(20) NOT NULL,
@@ -28,18 +36,11 @@ CREATE TABLE Assignment (
  due_date DATE NOT NULL DEFAULT '2019-05-18',
  category_name char(20) NOT NULL,
  course_name varchar(20) NOT NULL,
+ netId varchar(10) NOT NULL,
  FOREIGN KEY (category_name) REFERENCES Category(name),
  FOREIGN KEY(course_name) REFERENCES Course(name),
- PRIMARY KEY (assignment_name, course_name, category_name),
- KEY (id)
-);
-
-
-CREATE TABLE Student (
- id INT(11) UNSIGNED AUTO_INCREMENT,
- netId varchar(10) NOT NULL,
- YEAR int(11) DEFAULT NULL,
- PRIMARY KEY (netId),
+ FOREIGN KEY(netId) REFERENCES Student(netId),
+ PRIMARY KEY (assignment_name, course_name, category_name, netId),
  KEY (id)
 );
 
