@@ -14,7 +14,7 @@ CREATE TABLE Course (
 CREATE TABLE Assignment (
  id INT(11) UNSIGNED AUTO_INCREMENT,
  assignment_name varchar(50) NOT NULL,
- percentage decimal(5,5) DEFAULT NULL,
+ percentage decimal(6,3) DEFAULT NULL,
  PRIMARY KEY (assignment_name),
  KEY (id)
 );
@@ -22,7 +22,7 @@ CREATE TABLE Assignment (
 CREATE TABLE Category (
  id INT(11) UNSIGNED AUTO_INCREMENT,
  name char(20) NOT NULL,
- weightage decimal(2,2) DEFAULT NULL,
+ weightage decimal(6,3) DEFAULT NULL,
  PRIMARY KEY (name),
  KEY (id)
 );
@@ -64,4 +64,13 @@ CREATE TABLE Category_Assignment (
  FOREIGN KEY (category_name) REFERENCES Category (name)
  ON DELETE CASCADE
  ON UPDATE CASCADE
+);
+
+CREATE TABLE Class_Grade_Log (
+    id INT(11) AUTO_INCREMENT,
+    netId VARCHAR(10) NOT NULL,
+    course_name VARCHAR(10) NOT NULL,
+    grade DECIMAL(6, 3) NOT NULL,
+    time_stamp DATE NOT NULL,
+    PRIMARY KEY (id),
 );

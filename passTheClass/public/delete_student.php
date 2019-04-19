@@ -14,7 +14,7 @@ if (isset($_POST["submit"])) {
     $statement = $connection->prepare($sql);
     $statement->bindValue(':netId', $id);
     $statement->execute();
-    $success = "Student successfully deleted";
+    $success = "$id successfully deleted";
   } catch(PDOException $error) {
     echo $sql . "<br>" . $error->getMessage();
   }

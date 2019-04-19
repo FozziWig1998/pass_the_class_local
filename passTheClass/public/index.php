@@ -8,7 +8,7 @@
   </head>
 
   <body class="main">
-    <?php include "templates/header.php"; ?>
+    <!-- <?php include "templates/header.php"; ?> -->
 
 
     <?php
@@ -24,18 +24,20 @@
 
             $result = $statement->fetchAll();
 
-            $sql2 = "SELECT * FROM Assignment
-                    WHERE due_date <= CURRENT_DATE + INTERVAL 3 DAY";
-
-            $statement1 = $connection->prepare($sql2);
-            $statement1->execute();
-            $alerts = $statement1->fetchAll();
+            // $sql2 = "SELECT * FROM Assignment
+            //         WHERE due_date <= CURRENT_DATE + INTERVAL 3 DAY";
+            //
+            // $statement1 = $connection->prepare($sql2);
+            // $statement1->execute();
+            // $alerts = $statement1->fetchAll();
 
 
         } catch (PDOException $e) {
             echo $sql . "<br>" . $e->getMessage();
         }
     ?>
+    <?php include "templates/header.php"; ?>
+
       <table>
           <thead>
               <tr>
@@ -57,7 +59,8 @@
           </tbody>
       </table>
 
-    <br></br>
+
+    <!-- <br></br>
     <div class="sidenav">
       <table>
           <thead>
@@ -77,13 +80,14 @@
               <?php endforeach; ?>
           </tbody>
       </table>
-    </div>
+    </div> -->
     <!-- <script>
     alert("Hello! I am an alert box!");
     </script> -->
 
     <ul>
       <button type="button" class="btn btn-primary" onclick="window.location.href = 'update_class.php';">Manage Classes</button>
+      <a href="gpa_visualization.php"><strong>GOOD SHIT</strong></a>
 
       <!-- <li>
         <a href="create_class.php"><strong>Add a Class</strong></a>
@@ -132,7 +136,10 @@
       </li>
       <li>
         <a href="delete_student.php"><strong>Delete a Student</strong></a>
-      </li> -->
+      </li>
+      <li>
+        <a href="gpa_visualization.php"><strong>GOOD SHIT</strong></a>
+      </li>
 
 
         <br></br>

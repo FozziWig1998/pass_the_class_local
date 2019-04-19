@@ -17,10 +17,12 @@ if (isset($_POST['submit'])) {
       "id"                    => $_POST['id'],
       "assignment_name"       => $_POST['assignment_name'],
       "percentage"            => $_POST['percentage'],
+      "due_date"            => $_POST['due_date'],
     ];
     $sql = "UPDATE Assignment
             SET assignment_name = :assignment_name,
-                percentage = :percentage
+                percentage = :percentage,
+                due_date = :due_date
             WHERE id = :id;"
 
   $statement = $connection->prepare($sql);
