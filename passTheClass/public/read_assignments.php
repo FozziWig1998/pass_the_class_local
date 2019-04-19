@@ -63,6 +63,8 @@ if (isset($_POST['submit'])) {
   <input type="text" id="name" name="name">
   <label for="name">Course Name</label>
   <input type="text" id="course_name" name="course_name">
+  <label for="name">NetId</label>
+  <input type="text" id="netId" name="netId">
   <input type="submit" name="submit" value="View Results">
 </form>
 

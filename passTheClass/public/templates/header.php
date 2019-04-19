@@ -44,7 +44,7 @@
 
         $sql2 = "SELECT * FROM Assignment
                 WHERE due_date <= CURRENT_DATE + INTERVAL 3 DAY
-                      AND due_date > CURRENT_DATE";
+                    AND due_date > CURRENT_DATE";
 
         $statement1 = $connection->prepare($sql2);
         $statement1->execute();
