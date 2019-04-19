@@ -19,3 +19,4 @@ function escape($html) {
  ?>
  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"/>
  <link rel="stylesheet" href="css/style.css" />
+ <script src="https://d3js.org/d3.v5.min.js"></script>

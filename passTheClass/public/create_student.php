@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $connection = new PDO($dsn, $username, $password, $options);
     $new_user = array(
       "netId" => $_POST['netId'],
-      "YEAR"  => $_POST['YEAR'],
+      "curr_year"  => $_POST['curr_year'],
     );
     $sql = sprintf(
       "INSERT INTO %s (%s) values (%s)",
@@ -33,8 +33,8 @@ if (isset($_POST['submit'])) {
         <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
         <label for="netId">netId</label>
         <input type="text" name="netId" id="netId">
-        <label for="YEAR">year</label>
-        <input type="number" name="YEAR" min="1" value="1" step="1" id="YEAR">
+        <label for="curr_year">year</label>
+        <input type="number" name="curr_year" min="1" value="1" step="1" id="curr_year">
         <input type="submit" name="submit" value="Submit">
     </form>
 

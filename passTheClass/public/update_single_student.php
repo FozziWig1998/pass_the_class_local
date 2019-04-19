@@ -12,11 +12,11 @@ if (isset($_POST['submit'])) {
     $connection = new PDO($dsn, $username, $password, $options);
     $user =[
       "netId"   => $_POST['netId'],
-      "YEAR"    => $_POST['YEAR'],
+      "curr_year"    => $_POST['curr_year'],
     ];
     $sql = "UPDATE Student
             SET netId = :netId,
-                YEAR = :YEAR
+                curr_year = :curr_year
             WHERE netId = :netId";
   $statement = $connection->prepare($sql);
   $statement->execute($user);

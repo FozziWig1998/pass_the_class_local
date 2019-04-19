@@ -17,7 +17,7 @@ require "../common.php";
 
 <?php require "templates/header.php" ?>
 
-<h2>Update course</h2>
+<h2>Update Course</h2>
 
 <table>
     <thead>
@@ -26,7 +26,6 @@ require "../common.php";
             <th>Professor</th>
             <th>Semester</th>
             <th>Credit Hours</th>
-            <th>Edit</th>
         </tr>
     </thead>
     <tbody>
@@ -37,11 +36,15 @@ require "../common.php";
                 <td><?php echo escape($row["semester"]); ?></td>
                 <td><?php echo escape($row["creditHours"]); ?></td>
                 <td><a href="update-single_class.php?id=<?php echo escape($row["id"]); ?>">Edit</a></td>
+                <td><a href="delete_class.php?id=<?php echo escape($row["id"]); ?>">Delete</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
+<br></br>
+<button type="button" class="btn btn-primary" onclick="window.location.href = 'create_class.php';">Add Classes</button>
+<button type="button" class="btn btn-primary" onclick="window.location.href = 'index.php';">Go Home</button>
 
-<a href="index.php">Back to home</a>
+
 
 <?php require "templates/footer.php"; ?>

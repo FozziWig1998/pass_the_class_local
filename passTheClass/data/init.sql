@@ -31,7 +31,7 @@ CREATE TABLE Category (
 CREATE TABLE Student (
  id INT(11) UNSIGNED AUTO_INCREMENT,
  netId varchar(10) NOT NULL,
- YEAR int(11) DEFAULT NULL,
+ curr_year int(11) DEFAULT NULL,
  PRIMARY KEY (netId),
  KEY (id)
 );
@@ -64,4 +64,13 @@ CREATE TABLE Category_Assignment (
  FOREIGN KEY (category_name) REFERENCES Category (name)
  ON DELETE CASCADE
  ON UPDATE CASCADE
+);
+
+CREATE TABLE Class_Grade_Log (
+    id INT(11) AUTO_INCREMENT,
+    netId VARCHAR(10) NOT NULL,
+    course_name VARCHAR(10) NOT NULL,
+    grade DECIMAL(6, 3) NOT NULL,
+    time_stamp DATE NOT NULL,
+    PRIMARY KEY (id),
 );
