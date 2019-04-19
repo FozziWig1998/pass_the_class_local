@@ -23,12 +23,8 @@ if (isset($_POST['submit'])) {
 
     $sql = "
       INSERT INTO Assignment (assignment_name, percentage, due_date, category_name, course_name, netId)
-<<<<<<< HEAD
-                              VALUES (:assignment_name, :percentage, :due_date, :category_name, :course_name, :netId);
-=======
       VALUES (:assignment_name, :percentage, :due_date, :category_name, :course_name, :netId);
 
->>>>>>> b55c56c3a4fd94b5d2bfcbc4480a3a523811f3dd
       INSERT INTO Category_Assignment (assignment_name, category_name) VALUES (:assignment_name, :category_name);
       ";
 
@@ -38,11 +34,7 @@ if (isset($_POST['submit'])) {
     $statement->bindValue(':percentage', $percentage);
     $statement->bindValue(':category_name', $category_name);
     $statement->bindValue(':due_date', $due_date);
-<<<<<<< HEAD
     $statement->bindValue(':netId', $netId);
-=======
-    $statement->bindParam(':netId', $netId);
->>>>>>> b55c56c3a4fd94b5d2bfcbc4480a3a523811f3dd
 
     $statement->execute();
 

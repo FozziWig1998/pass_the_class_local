@@ -66,11 +66,7 @@ if (isset($_GET['course_name'])) {
 
 <button type="button" class="btn btn-primary" onclick="window.location.href = 'index.php';">Go Home</button>
 <button type="button" class="btn btn-primary" onclick="window.location.href = 'create_category.php';">Add Categories</button>
-<<<<<<< HEAD
 <button type="button" class="btn btn-primary" onclick="window.location.href = 'create_assignments.php';">Add Assignments</button>
-=======
-<button type="button" class="btn btn-primary" onclick="window.location.href = 'create_assignments.php';">Add Assignment</button>
->>>>>>> b55c56c3a4fd94b5d2bfcbc4480a3a523811f3dd
 
 
 <?php require "templates/footer.php"; ?>

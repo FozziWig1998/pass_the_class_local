@@ -11,7 +11,10 @@ if (isset($_POST["submit"])) {
     $connection = new PDO($dsn, $username, $password, $options);
 
     $id = $_POST["submit"];
-    $sql = "DELETE FROM Category WHERE id = :id";
+    $sql = "DELETE FROM Course_Category WHERE category_name = (SELECT name FROM Category WHERE id = :id);
+            DELETE FROM Category_Assignment WHERE category_name = (SELECT name FROM Category WHERE id = :id);
+            DELETE FROM Assignment WHERE category_name = (SELECT name FROM Category WHERE id = :id);
+            DELETE FROM Category WHERE id = :id;";
     $statement = $connection->prepare($sql);
     $statement->bindValue(':id', $id);
     $statement->execute();
@@ -49,7 +52,6 @@ try {
     <tbody>
     <?php foreach ($result as $row) : ?>
       <tr>
-        <td><?php echo escape($row["id"]); ?></td>
         <td><?php echo escape($row["name"]); ?></td>
         <td><?php echo escape($row["weightage"]); ?></td>
         <td><?php echo escape($row["course_name"]); ?></td>
