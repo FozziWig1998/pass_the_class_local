@@ -37,6 +37,7 @@ require "../common.php";
                 <td><?php echo escape($row["creditHours"]); ?></td>
                 <td><a href="update-single_class.php?id=<?php echo escape($row["id"]); ?>">Edit</a></td>
                 <td><a href="delete_class.php?id=<?php echo escape($row["id"]); ?>">Delete</a></td>
+                <td><a href="update_category.php?course_name=<?php echo escape($row["name"]); ?>">View Categories</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

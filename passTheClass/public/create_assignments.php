@@ -17,9 +17,11 @@ if (isset($_POST['submit'])) {
     $course_name = $_POST['course_name'];
     $percentage = $_POST['percentage'];
     $category_name = $_POST['category_name'];
+    $due_date = $_POST['due_date'];
+
 
     $sql = "
-      INSERT INTO Assignment (assignment_name, percentage) VALUES (:assignment_name, :percentage);
+      INSERT INTO Assignment (assignment_name, percentage, due_date) VALUES (:assignment_name, :percentage, :due_date);
       INSERT INTO Category_Assignment (assignment_name, category_name) VALUES (:assignment_name, :category_name);
       ";
 
@@ -28,41 +30,9 @@ if (isset($_POST['submit'])) {
     $statement->bindValue(':course_name', $course_name);
     $statement->bindValue(':percentage', $percentage);
     $statement->bindValue(':category_name', $category_name);
+    $statement->bindValue(':due_date', $due_date);
 
     $statement->execute();
-
-
-      // $connection = null;
-  /*
-    $new_user = array(
-      "name"         => $_POST['name'],
-      "course_name"   => $_POST['course_name'],
-      "percentage"   => $_POST['percentage']
-    );
-    $sql1 = sprintf(
-      "INSERT INTO %s (%s) values (%s)",
-      "Assignment",
-      implode(", ", array_keys($new_user)),
-      ":" . implode(", :", array_keys($new_user))
-    );
-    $statement = $connection->prepare($sql1);
-
-
-    $join_table = array(
-      "name"   => $_POST['assignment_name'],
-      "category_name"   => $_POST['category_name'],
-    );
-    $sql2 = sprintf(
-      "INSERT INTO %s (%s) values (%s)",
-      "Course_Category",
-      implode(", ", array_keys($join_table)),
-      ":" . implode(", :", array_keys($join_table))
-    );
-
-
-    $statement = $connection->prepare($sql2);
-    $statement->execute($new_user);
-    $statement->execute($join_table);*/
 
 
   } catch(PDOException $error) {
@@ -86,9 +56,11 @@ if (isset($_POST['submit'])) {
     <input type="number" name="percentage" min="0" value="0" step="0.05" id="percentage">
     <label for="Category">Category</label>
     <input type="text" name="category_name" id="category_name">
+    <label for="DueDate">Due Date</label>
+    <input type="date" name="due_date" id="due_date">
     <input type="submit" name="submit" value="Submit">
   </form>
 
-  <a href="index.php">Back to home</a>
+  <button type="button" class="btn btn-primary" onclick="window.location.href = 'index.php';">Go Home</button>
 
 <?php require "templates/footer.php"; ?>

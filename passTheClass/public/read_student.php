@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
 <?php
 if (isset($_POST['submit'])) {
   if ($result && $statement->rowCount() > 0) { ?>
-    <h2>Results</h2>
+    <h3>Results</h3>
 
     <table>
       <thead>
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
     <?php }
 } ?>
 
-<h2>Find Student based on netId</h2>
+<h3>Find Student based on netId</h3>
 
 <form method="post">
   <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
@@ -60,6 +60,6 @@ if (isset($_POST['submit'])) {
   <input type="submit" name="submit" value="View Results">
 </form>
 
-<a href="index.php">Back to home</a>
+<button type="button" class="btn btn-primary" onclick="window.location.href = 'index.php';">Go Home</button>
 
 <?php require "templates/footer.php"; ?>

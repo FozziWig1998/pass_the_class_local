@@ -53,7 +53,7 @@ if (isset($_GET['id'])) {
 	<blockquote><?php echo escape($_POST['name']); ?> successfully updated.</blockquote>
 <?php endif; ?>
 
-<h2>Edit a user</h2>
+<h2>Edit a Category</h2>
 
 <form method="post">
     <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
