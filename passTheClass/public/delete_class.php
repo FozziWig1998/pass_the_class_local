@@ -11,10 +11,25 @@ if (isset($_POST["submit"])) {
     $connection = new PDO($dsn, $username, $password, $options);
 
     $id = $_POST["submit"];
-    $sql = "DELETE FROM Course WHERE id = :id";
+    $sql = "DELETE FROM Course_Category WHERE course_name = (SELECT name FROM Course WHERE id = :id);
+            DELETE FROM Category WHERE course_name = (SELECT name FROM Course WHERE id = :id);
+            DELETE FROM Student_Class WHERE name = (SELECT name FROM Course WHERE id = :id);
+            DELETE FROM Class_Grade_Log WHERE course_name = (SELECT name FROM Course WHERE id = :id);
+            DELETE FROM Category_Assignment WHERE assignment_name = (SELECT assignment_name WHERE course_name = (SELECT name FROM Course WHERE id = :id));
+            DELETE FROM Assignment WHERE course_name = (SELECT name FROM Course WHERE id = :id);
+            DELETE FROM Course WHERE id = :id;
+    ";
     $statement = $connection->prepare($sql);
     $statement->bindValue(':id', $id);
     $statement->execute();
+
+    // $sql1 = "SELECT name FROM Course WHERE id = :id";
+    // $statement = $connection->prepare($sql);
+    // $statement->bindValue(':id', $id);
+    // $statement->execute();
+    $result = $statement->fetchALL();
+
+
     $success = "Course successfully deleted";
   } catch(PDOException $error) {
     echo $sql . "<br>" . $error->getMessage();

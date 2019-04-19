@@ -30,7 +30,8 @@ if (isset($_POST['submit'])) {
       } catch (PDOException $e) {
           echo $sql . "<br>" . $e->getMessage();
       }
-} //else {
+    }
+// } else {
 //     echo "Something went wrong!";
 //     exit;
 // }

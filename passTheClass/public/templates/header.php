@@ -15,6 +15,9 @@
        <a href="create_student.php"><strong>Create a Student</strong></a>
      </li>
       <li>
+        <a href="create_student.php"><strong>Create a Student</strong></a>
+      </li>
+      <li>
         <a href="read_class.php"><strong>Find a Class</strong></a>
       </li>
       <li>
@@ -25,6 +28,12 @@
       </li>
       <li>
         <a href="delete_student.php"><strong>Delete a Student</strong></a>
+      </li>
+      <li>
+        <a href="study_buddies.php"><strong>Find Study Buddies!</strong></a>
+      </li>
+      <li>
+        <a href="professors.php"><strong>Prof</strong></a>
       </li>
     </ul>
 

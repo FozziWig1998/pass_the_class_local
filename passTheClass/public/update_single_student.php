@@ -24,13 +24,13 @@ if (isset($_POST['submit'])) {
       echo $sql . "<br>" . $error->getMessage();
   }
 }
-if (isset($_GET['id'])) {
+if (isset($_GET['netId'])) {
   try {
     $connection = new PDO($dsn, $username, $password, $options);
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM Student WHERE id = :id";
+    $id = $_GET['netId'];
+    $sql = "SELECT * FROM Student WHERE netId = :netId";
     $statement = $connection->prepare($sql);
-    $statement->bindValue(':id', $id);
+    $statement->bindValue(':netId', $id);
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
   } catch(PDOException $error) {

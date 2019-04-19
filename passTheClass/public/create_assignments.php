@@ -23,8 +23,12 @@ if (isset($_POST['submit'])) {
 
     $sql = "
       INSERT INTO Assignment (assignment_name, percentage, due_date, category_name, course_name, netId)
+<<<<<<< HEAD
+                              VALUES (:assignment_name, :percentage, :due_date, :category_name, :course_name, :netId);
+=======
       VALUES (:assignment_name, :percentage, :due_date, :category_name, :course_name, :netId);
 
+>>>>>>> b55c56c3a4fd94b5d2bfcbc4480a3a523811f3dd
       INSERT INTO Category_Assignment (assignment_name, category_name) VALUES (:assignment_name, :category_name);
       ";
 
@@ -34,7 +38,11 @@ if (isset($_POST['submit'])) {
     $statement->bindValue(':percentage', $percentage);
     $statement->bindValue(':category_name', $category_name);
     $statement->bindValue(':due_date', $due_date);
+<<<<<<< HEAD
+    $statement->bindValue(':netId', $netId);
+=======
     $statement->bindParam(':netId', $netId);
+>>>>>>> b55c56c3a4fd94b5d2bfcbc4480a3a523811f3dd
 
     $statement->execute();
 
@@ -60,6 +68,10 @@ if (isset($_POST['submit'])) {
     <input type="number" name="percentage" min="0" value="0" step="0.05" id="percentage">
     <label for="Category">Category</label>
     <input type="text" name="category_name" id="category_name">
+    <label for="Course">Course</label>
+    <input type="text" name="course_name" id="course_name">
+    <label for="netId">Net Id</label>
+    <input type="text" name="netId" id="netId">
     <label for="DueDate">Due Date</label>
     <input type="date" name="due_date" id="due_date">
     <label for="Course">Course</label>

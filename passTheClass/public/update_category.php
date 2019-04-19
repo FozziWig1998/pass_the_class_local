@@ -44,10 +44,15 @@ if (isset($_GET['course_name'])) {
                 <td><?php echo escape($row["weightage"]); ?></td>
                 <td><a href="update-single_category.php?id=<?php echo escape($row["id"]); ?>">Edit</a></td>
                 <td><a href="delete_category.php?id=<?php echo escape($row["id"]); ?>">Delete</a></td>
+<<<<<<< HEAD
                 <a href="update_assignments.php?">View Assignments</a>
+=======
+
+>>>>>>> aa071bddf28f4c09bdaf9a33d9018a73c72a7f81
 
             </tr>
         <?php endforeach; ?>
+        <a href="update_assignments.php?">View Assignments</a>
     </tbody>
 </table>
 <!-- <h2>View Assignments For:</h2>
@@ -65,7 +70,15 @@ if (isset($_GET['course_name'])) {
 
 <button type="button" class="btn btn-primary" onclick="window.location.href = 'index.php';">Go Home</button>
 <button type="button" class="btn btn-primary" onclick="window.location.href = 'create_category.php';">Add Categories</button>
+<<<<<<< HEAD
 <button type="button" class="btn btn-primary" onclick="window.location.href = 'create_assignments.php';">Add Assignments</button>
+=======
+<<<<<<< HEAD
+<button type="button" class="btn btn-primary" onclick="window.location.href = 'create_assignments.php';">Add Assignments</button>
+=======
+<button type="button" class="btn btn-primary" onclick="window.location.href = 'create_assignments.php';">Add Assignment</button>
+>>>>>>> b55c56c3a4fd94b5d2bfcbc4480a3a523811f3dd
+>>>>>>> aa071bddf28f4c09bdaf9a33d9018a73c72a7f81
 
 
 <?php require "templates/footer.php"; ?>
