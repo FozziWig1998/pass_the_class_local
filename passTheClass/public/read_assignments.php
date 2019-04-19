@@ -12,12 +12,12 @@ if (isset($_POST['submit'])) {
     $connection = new PDO($dsn, $username, $password, $options);
     $sql = "SELECT *
             FROM Assignment
-            WHERE name = :name AND course_name = :course_CRN";
+            WHERE assignment_name = :name AND course_name = :course_name";
     $location = $_POST['name'];
-    $course_crn = $_POST['course_CRN'];
+    course_name = $_POST['course_name'];
     $statement = $connection->prepare($sql);
     $statement->bindParam(':name', $location, PDO::PARAM_STR);
-    $statement->bindParam(':course_CRN', $course_crn, PDO::PARAM_STR);
+    $statement->bindParam(':course_name', $course_name, PDO::PARAM_STR);
     $statement->execute();
     $result = $statement->fetchAll();
   } catch(PDOException $error) {
@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
       <thead>
         <tr>
           <th>Name</th>
-          <th>Course CRN</th>
+          <th>Course Name</th>
           <th>Weightage</th>
         </tr>
       </thead>
@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
       <?php foreach ($result as $row) : ?>
         <tr>
           <td><?php echo escape($row["name"]); ?></td>
-          <td><?php echo escape($row["course_CRN"]); ?></td>
+          <td><?php echo escape($row["course_name"]); ?></td>
           <td><?php echo escape($row["percentage"]); ?></td>
         </tr>
       <?php endforeach; ?>
@@ -61,8 +61,8 @@ if (isset($_POST['submit'])) {
   <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
   <label for="name">Name</label>
   <input type="text" id="name" name="name">
-  <label for="name">Course CRN</label>
-  <input type="number" id="course_CRN" name="course_CRN">
+  <label for="name">Course Name</label>
+  <input type="text" id="course_name" name="course_name">
   <input type="submit" name="submit" value="View Results">
 </form>
 

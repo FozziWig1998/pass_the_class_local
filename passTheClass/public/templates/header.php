@@ -11,6 +11,9 @@
   </head>
   <body class="main">
     <ul class="nav nav-tabs">
+     <li>
+       <a href="create_student.php"><strong>Create a Student</strong></a>
+     </li>
       <li>
         <a href="create_student.php"><strong>Create a Student</strong></a>
       </li>
@@ -56,7 +59,7 @@
     <div class="sidenav">
       <table>
           <thead>
-            <h5>Upcomming Assignments</h5>
+            <h5>Upcoming Assignments</h5>
               <tr>
                   <th>Name</th>
                   <th>Due Date</th>

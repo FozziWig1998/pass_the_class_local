@@ -3,7 +3,11 @@ use pass_the_class;
 CREATE TABLE Student (
  id INT(11) UNSIGNED AUTO_INCREMENT,
  netId varchar(10) NOT NULL,
+<<<<<<< HEAD
  YEAR int(11) DEFAULT NULL,
+=======
+ curr_year int(11) DEFAULT NULL,
+>>>>>>> b55c56c3a4fd94b5d2bfcbc4480a3a523811f3dd
  PRIMARY KEY (netId),
  KEY (id)
 );
