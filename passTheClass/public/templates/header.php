@@ -11,6 +11,9 @@
   </head>
   <body class="main">
     <ul class="nav nav-tabs">
+     <li>
+       <a href="create_student.php"><strong>Create a Student</strong></a>
+     </li>
       <li>
         <a href="read_class.php"><strong>Find a Class</strong></a>
       </li>
