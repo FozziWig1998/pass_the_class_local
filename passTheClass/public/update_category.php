@@ -49,18 +49,6 @@ if (isset($_GET['course_name'])) {
         <a href="update_assignments.php?">View Assignments</a>
     </tbody>
 </table>
-<!-- <h2>View Assignments For:</h2>
-
-<form method="post">
-  <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
-  <label for="Course Name">Course Name</label>
-  <input type="text" name="course_name" id="course_name">
-  <label for="Category Name">Category Name</label>
-  <input type="text" name="category_name" id="category_name">
-  <label for="Net Id">Net Id</label>
-  <input type="text" name="netId" id="netId">
-  <a href="update_assignments.php?id=<?php echo escape($row["id"]); ?>">View Assignments</a>
-</form> -->
 
 <button type="button" class="btn btn-primary" onclick="window.location.href = 'index.php';">Go Home</button>
 <button type="button" class="btn btn-primary" onclick="window.location.href = 'create_category.php';">Add Categories</button>

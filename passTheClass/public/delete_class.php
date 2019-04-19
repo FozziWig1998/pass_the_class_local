@@ -76,6 +76,6 @@ try {
   </table>
 </form>
 
-<a href="index.php">Back to home</a>
+<button type="button" class="btn btn-primary" onclick="window.location.href = 'index.php';">Go Home</button>
 
 <?php require "templates/footer.php"; ?>
