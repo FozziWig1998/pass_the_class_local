@@ -14,11 +14,7 @@ if (isset($_POST['submit'])) {
 
         $sql = "SELECT *
                 FROM Assignment
-                WHERE assignment_name IN (
-                                    SELECT assignment_name
-                                    FROM Assignment
-                                    WHERE course_name = :course_name AND netId = :netId
-                                    );";
+                WHERE course_name = :course_name AND netId = :netId;";
 
         $statement = $connection->prepare($sql);
         $statement->bindValue(':course_name', $course_name);

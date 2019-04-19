@@ -74,6 +74,8 @@ if (isset($_POST['submit'])) {
 
 <button type="button" class="btn btn-primary" onclick="window.location.href = 'index.php';">Go Home</button>
 <button type="button" class="btn btn-primary" onclick="window.location.href = 'create_assignments.php';">Add Assignment</button>
+<button type="button" class="btn btn-warning" onclick="window.location.href = 'create_class.php';">Add Class</button>
+
 
 
 <?php require "templates/footer.php"; ?>
