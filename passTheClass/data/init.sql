@@ -47,7 +47,7 @@ CREATE TABLE Assignment (
 CREATE TABLE Course_Category (
   course_name varchar(20) NOT NULL,
   category_name char(20) NOT NULL,
-  PRIMARY KEY(course_name),
+  PRIMARY KEY(course_name, category_name),
   FOREIGN KEY(course_name) REFERENCES Course(name),
   FOREIGN KEY(category_name) REFERENCES Category(name)
   ON DELETE CASCADE
