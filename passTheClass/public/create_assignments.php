@@ -18,10 +18,13 @@ if (isset($_POST['submit'])) {
     $percentage = $_POST['percentage'];
     $category_name = $_POST['category_name'];
     $due_date = $_POST['due_date'];
+    $netId = $_POST['netId'];
 
 
     $sql = "
-      INSERT INTO Assignment (assignment_name, percentage, due_date) VALUES (:assignment_name, :percentage, :due_date);
+      INSERT INTO Assignment (assignment_name, percentage, due_date, category_name, course_name, netId)
+      VALUES (:assignment_name, :percentage, :due_date, :category_name, :course_name, :netId);
+
       INSERT INTO Category_Assignment (assignment_name, category_name) VALUES (:assignment_name, :category_name);
       ";
 
@@ -31,6 +34,7 @@ if (isset($_POST['submit'])) {
     $statement->bindValue(':percentage', $percentage);
     $statement->bindValue(':category_name', $category_name);
     $statement->bindValue(':due_date', $due_date);
+    $statement->bindParam(':netId', $netId);
 
     $statement->execute();
 
@@ -58,6 +62,10 @@ if (isset($_POST['submit'])) {
     <input type="text" name="category_name" id="category_name">
     <label for="DueDate">Due Date</label>
     <input type="date" name="due_date" id="due_date">
+    <label for="Course">Course</label>
+    <input type="text" name="course_name" id="course_name">
+    <label for="NetId">NetId</label>
+    <input type="text" name="netId" id="netId">
     <input type="submit" name="submit" value="Submit">
   </form>
 
