@@ -72,3 +72,12 @@ CREATE TABLE Category_Assignment (
  ON DELETE CASCADE
  ON UPDATE CASCADE
 );
+
+CREATE TABLE Class_Grade_Log (
+    id INT(11) AUTO_INCREMENT,
+    netId VARCHAR(10) NOT NULL,
+    course_name VARCHAR(10) NOT NULL,
+    grade DECIMAL(6, 3) NOT NULL,
+    time_stamp DATE NOT NULL,
+    PRIMARY KEY (id)
+);
