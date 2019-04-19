@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
     $weightage = $_POST['weightage'];
 
     $sql = "
-    INSERT IGNORE INTO Category (name, weightage) VALUES (:name, :weightage);
+    INSERT IGNORE INTO Category (name, weightage, course_name) VALUES (:name, :weightage, :course_name);
     INSERT INTO Course_Category (course_name, category_name) VALUES (:course_name, :name);
     ";
 

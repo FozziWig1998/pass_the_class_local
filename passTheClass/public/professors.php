@@ -8,10 +8,17 @@ if (isset($_POST["submit"])) {
   if (!hash_equals($_SESSION['csrf'], $_POST['csrf'])) die();
   try {
     $connection = new PDO($dsn, $username, $password, $options);
+    $netId = $_POST['netId'];
     $sql = "SELECT professor AS prof, COUNT(*) AS ct
-            FROM Course
-            GROUP BY Course.professor;";
+            FROM (SELECT *
+                  FROM Course
+                  WHERE name IN (
+								SELECT name
+                                FROM Student_Class
+                                WHERE netId = :netId)) as Filter
+            GROUP BY Filter.professor;";
     $statement = $connection->prepare($sql);
+    $statement->bindValue(':netId', $netId);
     $statement->execute();
     $result = $statement->fetchAll();
   } catch(PDOException $error) {

@@ -32,14 +32,14 @@ if (isset($_POST["submit"])) {
     echo $sql . "<br>" . $error->getMessage();
   }
 }
-if (isset($_GET['assignment_name'])) {
+if (isset($_GET['id'])) {
     try {
         $connection = new PDO($dsn, $username, $password, $options);
-        $assignment_name = $_GET['assignment_name'];
-        $sql = "SELECT * FROM Assignment WHERE assignment_name = :assignment_name";
+        $id = $_GET['id'];
+        $sql = "SELECT * FROM Assignment WHERE id = :id";
 
         $statement = $connection->prepare($sql);
-        $statement->bindValue(':assignment_name', $assignment_name);
+        $statement->bindValue(':id', $id);
         $statement->execute();
 
         $result = $statement->fetchAll();

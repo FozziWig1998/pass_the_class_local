@@ -43,6 +43,7 @@ try {
       <tr>
         <th>Name</th>
         <th>Weightage</th>
+        <th>Course</th>
       </tr>
     </thead>
     <tbody>
@@ -51,6 +52,7 @@ try {
         <td><?php echo escape($row["id"]); ?></td>
         <td><?php echo escape($row["name"]); ?></td>
         <td><?php echo escape($row["weightage"]); ?></td>
+        <td><?php echo escape($row["course_name"]); ?></td>
         <td><button type="submit" name="submit" value="<?php echo escape($row["id"]); ?>">Delete</button></td>
       </tr>
     <?php endforeach; ?>

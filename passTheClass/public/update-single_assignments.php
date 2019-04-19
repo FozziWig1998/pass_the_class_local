@@ -11,19 +11,23 @@ if (isset($_POST['submit'])) {
   if (!hash_equals($_SESSION['csrf'], $_POST['csrf'])) die();
   try {
     $connection = new PDO($dsn, $username, $password, $options);
-
-
     $user =[
-      "id"                    => $_POST['id'],
-      "assignment_name"       => $_POST['assignment_name'],
-      "percentage"            => $_POST['percentage'],
-      "due_date"            => $_POST['due_date'],
+      "id"                      => $_POST['id'],
+      "assignment_name"         => $_POST['assignment_name'],
+      "percentage"              => $_POST['percentage'],
+      "due_date"                => $_POST['due_date'],
+      "category_name"           => $_POST['category_name'],
+      "course_name"             => $_POST['course_name'],
+      "netId"                   => $_POST['netId']
     ];
     $sql = "UPDATE Assignment
             SET assignment_name = :assignment_name,
                 percentage = :percentage,
-                due_date = :due_date
-            WHERE id = :id;"
+                due_date = :due_date,
+                category_name = :category_name,
+                course_name = :course_name,
+                netId = :netId
+            WHERE id = :id";
 
   $statement = $connection->prepare($sql);
   $statement->execute($user);
@@ -54,10 +58,10 @@ if (isset($_GET['id'])) {
 <?php require "templates/header.php"; ?>
 
 <?php if (isset($_POST['submit']) && $statement) : ?>
-	<blockquote><?php echo escape($_POST['assignment_name']); ?> successfully updated.</blockquote>
+	<blockquote><?php echo escape($_POST['name']); ?> successfully updated.</blockquote>
 <?php endif; ?>
 
-<h2>Edit an Assignment</h2>
+<h2>Edit a Category</h2>
 
 <form method="post">
     <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">

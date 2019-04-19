@@ -55,6 +55,8 @@ if (isset($_POST['submit'])) {
   <input type="text" id="netId" name="netId">
   <label for="netId">Course Name</label>
   <input type="text" id="course_name" name="course_name">
+  <input type="submit" name="submit" value="Submit">
+
   <a href="simple-graph.html" class="btn btn-default">View Graph</a>
   <a href="index.php" class="btn btn-default">Back to Home</a>
 </form>

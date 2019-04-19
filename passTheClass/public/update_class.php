@@ -37,11 +37,12 @@ require "../common.php";
                 <td><?php echo escape($row["creditHours"]); ?></td>
                 <td><a href="update-single_class.php?id=<?php echo escape($row["id"]); ?>">Edit</a></td>
                 <td><a href="delete_class.php?id=<?php echo escape($row["id"]); ?>">Delete</a></td>
-                <td><a href="update_category.php?course_name=<?php echo escape($row["name"]); ?>">View Categories</a></td>
+                <td><a href="update_category.php?course_name=<?php echo escape($row["name"]);?>">View Categories</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
+
 <br></br>
 <button type="button" class="btn btn-primary" onclick="window.location.href = 'create_class.php';">Add Classes</button>
 <button type="button" class="btn btn-primary" onclick="window.location.href = 'index.php';">Go Home</button>

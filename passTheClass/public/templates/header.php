@@ -12,6 +12,9 @@
   <body class="main">
     <ul class="nav nav-tabs">
       <li>
+        <a href="create_student.php"><strong>Create a Student</strong></a>
+      </li>
+      <li>
         <a href="read_class.php"><strong>Find a Class</strong></a>
       </li>
       <li>
@@ -23,6 +26,12 @@
       <li>
         <a href="delete_student.php"><strong>Delete a Student</strong></a>
       </li>
+      <li>
+        <a href="study_buddies.php"><strong>Find Study Buddies!</strong></a>
+      </li>
+      <li>
+        <a href="professors.php"><strong>Prof</strong></a>
+      </li>
     </ul>
 
     <h1>Pass the Class</h1>
@@ -31,7 +40,8 @@
         $connection = new PDO($dsn, $username, $password, $options);
 
         $sql2 = "SELECT * FROM Assignment
-                WHERE due_date <= CURRENT_DATE + INTERVAL 3 DAY";
+                WHERE due_date <= CURRENT_DATE + INTERVAL 3 DAY
+                      AND due_date > CURRENT_DATE";
 
         $statement1 = $connection->prepare($sql2);
         $statement1->execute();
