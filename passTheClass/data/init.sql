@@ -10,20 +10,27 @@ CREATE TABLE Course (
  KEY (id)
 );
 
+CREATE TABLE Category (
+ id INT(11) UNSIGNED AUTO_INCREMENT,
+ name char(20) NOT NULL,
+ weightage decimal(6,3) DEFAULT NULL,
+ course_name varchar(20) NOT NULL,
+ FOREIGN KEY(course_name) REFERENCES Course(name),
+ PRIMARY KEY (name, course_name),
+ KEY (id)
+);
+
 
 CREATE TABLE Assignment (
  id INT(11) UNSIGNED AUTO_INCREMENT,
  assignment_name varchar(50) NOT NULL,
  percentage decimal(6,3) DEFAULT NULL,
- PRIMARY KEY (assignment_name),
- KEY (id)
-);
-
-CREATE TABLE Category (
- id INT(11) UNSIGNED AUTO_INCREMENT,
- name char(20) NOT NULL,
- weightage decimal(6,3) DEFAULT NULL,
- PRIMARY KEY (name),
+ due_date DATE NOT NULL DEFAULT '2019-05-18',
+ category_name char(20) NOT NULL,
+ course_name varchar(20) NOT NULL,
+ FOREIGN KEY (category_name) REFERENCES Category(name),
+ FOREIGN KEY(course_name) REFERENCES Course(name),
+ PRIMARY KEY (assignment_name, course_name, category_name),
  KEY (id)
 );
 
@@ -31,7 +38,7 @@ CREATE TABLE Category (
 CREATE TABLE Student (
  id INT(11) UNSIGNED AUTO_INCREMENT,
  netId varchar(10) NOT NULL,
- curr_year int(11) DEFAULT NULL,
+ YEAR int(11) DEFAULT NULL,
  PRIMARY KEY (netId),
  KEY (id)
 );
@@ -64,13 +71,4 @@ CREATE TABLE Category_Assignment (
  FOREIGN KEY (category_name) REFERENCES Category (name)
  ON DELETE CASCADE
  ON UPDATE CASCADE
-);
-
-CREATE TABLE Class_Grade_Log (
-    id INT(11) AUTO_INCREMENT,
-    netId VARCHAR(10) NOT NULL,
-    course_name VARCHAR(10) NOT NULL,
-    grade DECIMAL(6, 3) NOT NULL,
-    time_stamp DATE NOT NULL,
-    PRIMARY KEY (id),
 );
