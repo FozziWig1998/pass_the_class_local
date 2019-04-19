@@ -87,7 +87,7 @@
 
     <ul>
       <button type="button" class="btn btn-primary" onclick="window.location.href = 'update_class.php';">Manage Classes</button>
-      <a href="gpa_visualization.php"><strong>GOOD SHIT</strong></a>
+      <a href="gpa_visualization.php"><strong>Progress Chart</strong></a>
 
       <!-- <li>
         <a href="create_class.php"><strong>Add a Class</strong></a>

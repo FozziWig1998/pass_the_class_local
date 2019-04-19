@@ -7,6 +7,24 @@
 require "../config.php";
 require "../common.php";
 
+if (isset($_GET['id'])) {
+  try {
+    $connection = new PDO($dsn, $username, $password, $options);
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM Assignment WHERE id = :id";
+    $statement = $connection->prepare($sql);
+    $statement->bindValue(':id', $id);
+    $statement->execute();
+
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+  } catch(PDOException $error) {
+      echo $sql . "<br>" . $error->getMessage();
+  }
+} else {
+    echo "Something went wrong!";
+    exit;
+}
+
 if (isset($_POST['submit'])) {
   if (!hash_equals($_SESSION['csrf'], $_POST['csrf'])) die();
   try {
@@ -30,24 +48,6 @@ if (isset($_POST['submit'])) {
   } catch(PDOException $error) {
       echo $sql . "<br>" . $error->getMessage();
   }
-}
-
-if (isset($_GET['id'])) {
-  try {
-    $connection = new PDO($dsn, $username, $password, $options);
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM Assignment WHERE id = :id";
-    $statement = $connection->prepare($sql);
-    $statement->bindValue(':id', $id);
-    $statement->execute();
-
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
-  } catch(PDOException $error) {
-      echo $sql . "<br>" . $error->getMessage();
-  }
-} else {
-    echo "Something went wrong!";
-    exit;
 }
 ?>
 

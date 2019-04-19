@@ -22,6 +22,8 @@ if (isset($_GET['course_name'])) {
     echo "Something went wrong!";
     exit;
 }
+
+
 ?>
 
 <?php require "templates/header.php" ?>
@@ -42,15 +44,28 @@ if (isset($_GET['course_name'])) {
                 <td><?php echo escape($row["weightage"]); ?></td>
                 <td><a href="update-single_category.php?id=<?php echo escape($row["id"]); ?>">Edit</a></td>
                 <td><a href="delete_category.php?id=<?php echo escape($row["id"]); ?>">Delete</a></td>
-                <td><a href="update_assignments.php?category_name=<?php echo escape($row["name"]); ?>">View Assignments</a></td>
+                <a href="update_assignments.php?">View Assignments</a>
+
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
+<!-- <h2>View Assignments For:</h2>
+
+<form method="post">
+  <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
+  <label for="Course Name">Course Name</label>
+  <input type="text" name="course_name" id="course_name">
+  <label for="Category Name">Category Name</label>
+  <input type="text" name="category_name" id="category_name">
+  <label for="Net Id">Net Id</label>
+  <input type="text" name="netId" id="netId">
+  <a href="update_assignments.php?id=<?php echo escape($row["id"]); ?>">View Assignments</a>
+</form> -->
 
 <button type="button" class="btn btn-primary" onclick="window.location.href = 'index.php';">Go Home</button>
 <button type="button" class="btn btn-primary" onclick="window.location.href = 'create_category.php';">Add Categories</button>
-<button type="button" class="btn btn-primary" onclick="window.location.href = 'create_assignments.php';">Add Assignment</button>
+<button type="button" class="btn btn-primary" onclick="window.location.href = 'create_assignments.php';">Add Assignments</button>
 
 
 <?php require "templates/footer.php"; ?>
