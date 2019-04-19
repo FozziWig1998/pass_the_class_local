@@ -44,7 +44,7 @@
             .attr("transform",
                 "translate(" + margin.left + "," + margin.top + ")");
 
-    d3.csv("../assests/data.csv", function(error, data) {
+    d3.csv("../assets/data.csv", function(error, data) {
         data.forEach(function(d) {
             d.time_stamp = parseDate(d.time_stamp);
             d.grade = +d.grade;
