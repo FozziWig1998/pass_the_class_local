@@ -6,9 +6,7 @@ if (isset($_GET['course_name'])) {
     try {
         $connection = new PDO($dsn, $username, $password, $options);
         $course_name = $_GET['course_name'];
-        $sql = "SELECT * FROM Category WHERE name IN (
-          SELECT category_name FROM Course_Category WHERE course_name = :course_name
-        )";
+        $sql = "SELECT * FROM Category WHERE course_name = :course_name";
 
         $statement = $connection->prepare($sql);
         $statement->bindValue(':course_name', $course_name);

@@ -23,14 +23,23 @@ if (isset($_POST["submit"])) {
     echo $sql . "<br>" . $error->getMessage();
   }
 }
-try {
-  $connection = new PDO($dsn, $username, $password, $options);
-  $sql = "SELECT * FROM Category";
-  $statement = $connection->prepare($sql);
-  $statement->execute();
-  $result = $statement->fetchAll();
-} catch(PDOException $error) {
-  echo $sql . "<br>" . $error->getMessage();
+if (isset($_GET['id'])) {
+    try {
+        $connection = new PDO($dsn, $username, $password, $options);
+        $id = $_GET['id'];
+        $sql = "SELECT * FROM Category WHERE id = :id";
+
+        $statement = $connection->prepare($sql);
+        $statement->bindValue(':id', $id);
+        $statement->execute();
+
+        $result = $statement->fetchAll();
+      } catch (PDOException $e) {
+          echo $sql . "<br>" . $e->getMessage();
+      }
+} else {
+    echo "Something went wrong!";
+    exit;
 }
 ?>
 <?php require "templates/header.php"; ?>

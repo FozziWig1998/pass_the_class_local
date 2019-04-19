@@ -66,10 +66,6 @@ if (isset($_POST['submit'])) {
     <input type="text" name="netId" id="netId">
     <label for="DueDate">Due Date</label>
     <input type="date" name="due_date" id="due_date">
-    <label for="Course">Course</label>
-    <input type="text" name="course_name" id="course_name">
-    <label for="NetId">NetId</label>
-    <input type="text" name="netId" id="netId">
     <input type="submit" name="submit" value="Submit">
   </form>
 
