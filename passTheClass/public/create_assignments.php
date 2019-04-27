@@ -20,13 +20,53 @@ if (isset($_POST['submit'])) {
     $due_date = $_POST['due_date'];
     $netId = $_POST['netId'];
 
+    $grade = "
+    SELECT demon.course_name AS course_name, (toast/satan)*100 AS grade
+            FROM (	SELECT Assignment.course_name, SUM(percentage*0.01*calc) AS toast
+                FROM ( SELECT creambang.course_name, creambang.category_name, weightage, weightage/COUNT(creambang.assignment_name) AS calc
+                    FROM Category JOIN (SELECT * FROM Assignment WHERE netId = :netId) AS creambang ON Category.name = creambang.category_name
+                      AND Category.course_name = creambang.course_name
+                    GROUP BY creambang.category_name, creambang.course_name) AS table1,
+                  Assignment
+                WHERE Assignment.netId = :netId
+                AND Assignment.category_name = table1.category_name AND Assignment.course_name = table1.course_name
+                GROUP BY Assignment.course_name ) AS bread,
+              (	SELECT dead.course_name, SUM(weightage) AS satan
+                FROM (	SELECT grape.course_name, grape.category_name, weightage
+                    FROM Category JOIN (SELECT * FROM Assignment WHERE netId = :netId) AS grape ON Category.name = grape.category_name
+                        AND Category.course_name = grape.course_name
+                    GROUP BY grape.category_name, grape.course_name ) AS dead
+                GROUP BY dead.course_name) AS demon
+            WHERE bread.course_name = demon.course_name
+            GROUP BY demon.course_name;
+    ";
+    $statement = $connection->prepare($grade);
+    $statement->bindValue(':netId', $netId);
+    $statement->execute();
+    $result = $statement->fetchAll();
+
+    foreach($result as $name) {
+      for ($x = 0; $x < sizeof($name); $x++) {
+        if ($name[$x] == $course_name) {
+          $grade_single = $name[$x+1];
+          break 2;
+        }
+      }
+
+
+      //break; // break loop after first iteration
+    }
 
     $sql = "
       INSERT INTO Assignment (assignment_name, percentage, due_date, category_name, course_name, netId)
       VALUES (:assignment_name, :percentage, :due_date, :category_name, :course_name, :netId);
 
       INSERT INTO Category_Assignment (assignment_name, category_name) VALUES (:assignment_name, :category_name);
+
+      INSERT INTO Class_Grade_Log (netId, course_name, grade, time_stamp) VALUES (:netId, :course_name, :grade, :time_stamp);
+
       ";
+
 
     $statement = $connection->prepare($sql);
     $statement->bindValue(':assignment_name', $assignment_name);
@@ -35,6 +75,10 @@ if (isset($_POST['submit'])) {
     $statement->bindValue(':category_name', $category_name);
     $statement->bindValue(':due_date', $due_date);
     $statement->bindValue(':netId', $netId);
+    $statement->bindValue(':time_stamp', date("Y-m-d"));
+    $statement->bindValue(':grade', $grade_single);
+
+
 
     $statement->execute();
 

@@ -12,6 +12,7 @@ if (isset($_POST["submit"])) {
 
     $id = $_POST["submit"];
     $assignment_name = $_POST['assignment_name'];
+    $course_name = $_POST['course_name'];
     $sql = "DELETE
             FROM Category_Assignment
             WHERE assignment_name IN (
@@ -21,10 +22,15 @@ if (isset($_POST["submit"])) {
 
             DELETE
             FROM Assignment
-            WHERE id = :id; ";
+            WHERE id = :id;
+
+            Delete
+            FROM Class_Grade_Log
+            Where course_name = :course_name";
     $statement = $connection->prepare($sql);
     $statement->bindValue(':id', $id);
     $statement->bindValue(':assignment_name', $assignment_name);
+    $statement->bindValue(':course_name', $course_name);
 
     $statement->execute();
     $success = "Assignment successfully deleted";
@@ -62,6 +68,7 @@ if (isset($_GET['id'])) {
   <table>
     <thead>
       <tr>
+        <th>Course Name</th>
         <th>Name</th>
         <th>Percentage</th>
       </tr>
@@ -69,6 +76,7 @@ if (isset($_GET['id'])) {
     <tbody>
     <?php foreach ($result as $row) : ?>
       <tr>
+        <td><?php echo escape($row["course_name"]); ?></td>
         <td><?php echo escape($row["assignment_name"]); ?></td>
         <td><?php echo escape($row["percentage"]); ?></td>
         <td><button type="submit" name="submit" value="<?php echo escape($row["id"]); ?>">Delete</button></td>

@@ -7,8 +7,9 @@ if (isset($_POST['submit'])) {
     try  {
       $connection = new PDO($dsn, $username, $password, $options);
 
-      $netId = "parthgp2";
-      $course_name = "CS 241";
+      $netId = $_POST['netId'];
+      $course_name = $_POST['course_name'];
+
 
       $sql = "
             SELECT time_stamp, grade
@@ -24,7 +25,7 @@ if (isset($_POST['submit'])) {
       $statement->execute();
       // $result = $statement->fetchAll();
 
-        $filelocation = '../assests/';
+        $filelocation = '../assets/';
         $filename = 'data.csv';
         $file_export = $filelocation.$filename;
 

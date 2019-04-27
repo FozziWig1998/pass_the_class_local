@@ -12,12 +12,13 @@ if (isset($_POST['submit'])) {
         // $category_name = $_POST['category_name'];
         $netId = $_POST['netId'];
 
-        $sql = "SELECT *
-                FROM Course
+        $sql = "SELECT Course.name, Course.professor, Course.semester, Course.creditHours, Student.netId
+                FROM Course, Student
                 WHERE name IN (SELECT name
                                 FROM Student_Class
                                 WHERE netId = :netId
-                                );";
+                                )
+                                AND netId = :netId;";
 
         $statement = $connection->prepare($sql);
         $statement->bindValue(':netId', $netId);
@@ -56,7 +57,7 @@ if (isset($_POST['submit'])) {
                 <td><?php echo escape($row["semester"]); ?></td>
                 <td><?php echo escape($row["creditHours"]); ?></td>
                 <td><a href="update-single_class.php?id=<?php echo escape($row["id"]); ?>">Edit</a></td>
-                <td><a href="delete_class.php?id=<?php echo escape($row["id"]); ?>">Delete</a></td>
+                <td><a href="delete_class.php?netId=<?php echo escape($row["netId"]); ?>">Delete</a></td>
                 <td><a href="update_category.php?course_name=<?php echo escape($row["name"]);?>">View Categories</a></td>
             </tr>
         <?php endforeach; ?>
